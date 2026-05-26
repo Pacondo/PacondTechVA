@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PacondoTechVA — Your Automation Specialist</title>
+  <link rel="icon" type="image/png" href="images/webicon.png" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ═══════════════════ NAVBAR ═══════════════════ -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a class="nav-logo" href="#home">PacondoTechVA.</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="nav-right">
+        <button class="btn-theme" id="themeToggle" aria-label="Toggle dark/light mode">
+          <!-- moon icon -->
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <a href="#contact" class="btn-nav-contact">Hire Me</a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════ HERO ═══════════════════ -->
+  <section class="hero" id="home">
+    <div class="sparkle sp1">⚙</div>
+    <div class="sparkle sp2">⚡</div>
+    <div class="sparkle sp3">{ }</div>
+    <div class="sparkle sp4">⚙</div>
+    <div class="sparkle sp5">∞</div>
+    <div class="sparkle sp6">→</div>
+    <div class="sparkle sp7">⟳</div>
+
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <div class="badge">
+          <span class="badge-line"></span>
+          Open for new project
+        </div>
+        <h1>Hey!<br /><span class="name-muted">I'm </span><span class="name-accent">Pacondo</span></h1>
+        <p class="hero-subtitle">Your Technical Virtual Assistant</p>
+        <p class="hero-desc">
+          Passionate about building efficient, automated workflows that save time,
+          reduce errors, and keep your systems running smoothly. Let's streamline
+          your operations and create smart solutions together.
+        </p>
+        <div class="hero-btns">
+          <a href="#portfolio" class="btn-primary">View my work &rarr;</a>
+          <!-- REPLACE href with your actual resume link -->
+          <a href="#" class="btn-outline"><span class="btn-resume-icon">&#128196;</span> Resume</a>
+        </div>
+      </div>
+
+      <div class="hero-photo">
+        <!-- REPLACE src with your profile photo path, e.g. images/profile.jpg -->
+        <img src="images/profile.png" alt="Pacondo Rote Jr" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="photo-fallback">P</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ SERVICES ═══════════════════ -->
+  <section class="services section" id="services">
+    <div class="container">
+      <div class="section-head">
+        <h2>Services</h2>
+        <p>From workflow automation to AI-powered solutions — I deliver cutting-edge technical solutions that transform how you work.</p>
+      </div>
+      <div class="services-grid">
+
+        <div class="card service-card animate-up">
+          <span class="service-icon">🔄</span>
+          <h3>Workflow Automation</h3>
+          <ul>
+            <li>Zapier Multi-step Workflows</li>
+            <li>Make Scenario Building</li>
+            <li>n8n Pipeline Automation</li>
+            <li>Trigger-based Sequences</li>
+          </ul>
+        </div>
+
+        <div class="card service-card animate-up">
+          <span class="service-icon">🔌</span>
+          <h3>API Integration</h3>
+          <ul>
+            <li>REST API Connections</li>
+            <li>Webhook Configuration</li>
+            <li>Third-party App Sync</li>
+            <li>Real-time Data Transfer</li>
+          </ul>
+        </div>
+
+        <div class="card service-card animate-up">
+          <span class="service-icon">📣</span>
+          <h3>CRM &amp; Marketing</h3>
+          <ul>
+            <li>GoHighLevel Automation</li>
+            <li>Pipeline & Funnel Setup</li>
+            <li>Email & SMS Sequences</li>
+            <li>Lead Nurturing Workflows</li>
+          </ul>
+        </div>
+
+        <div class="card service-card animate-up">
+          <span class="service-icon">📊</span>
+          <h3>Data Management</h3>
+          <ul>
+            <li>Google Sheets Automation</li>
+            <li>Airtable Database Setup</li>
+            <li>Notion Workspace Build</li>
+            <li>Automated Data Reporting</li>
+          </ul>
+        </div>
+
+        <div class="card service-card animate-up">
+          <span class="service-icon">⚡</span>
+          <h3>Process Optimization</h3>
+          <ul>
+            <li>Business Process Mapping</li>
+            <li>Automation Audit & Review</li>
+            <li>SOP Development</li>
+            <li>ROI-focused Strategy</li>
+          </ul>
+        </div>
+
+        <div class="card service-card animate-up">
+          <span class="service-icon">🤖</span>
+          <h3>AI Automation</h3>
+          <ul>
+            <li>AI-powered Chatbots</li>
+            <li>Smart Lead Qualification</li>
+            <li>Automated AI Responses</li>
+            <li>AI Workflow Integration</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ TOOLS & PLATFORMS ═══════════════════ -->
+  <section class="tools section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Tools &amp; Platforms</h2>
+        <p>Technologies I use to build exceptional digital products</p>
+      </div>
+    </div>
+    <div class="marquee-wrap">
+      <div class="marquee-track">
+        <div class="tool-pill"><img src="https://cdn.simpleicons.org/zapier/ff4a00" alt="" onerror="this.style.display='none'"><span>Zapier</span></div>
+        <div class="tool-pill"><img src="https://cdn.simpleicons.org/make/6d00cc" alt="" onerror="this.style.display='none'"><span>Make</span></div>
+        <div class="tool-pill"><img src="https://cdn.simpleicons.org/n8n/ea4b71" alt="" onerror="this.style.display='none'"><span>n8n</span></div>
+        <div class="tool-pill"><img src="https://cdn.simpleicons.org/hubspot/ff7a59" alt="" onerror="this.style.display='none'"><span>HubSpot</span></div>
+        <div class="tool-pill"><img src="images/monday.png" alt="" onerror="this.style.display='none'"><span>Monday.com</span></div>
+        <div class="tool-pill"><img src="https://cdn.simpleicons.org/shopify/96bf48" alt="" onerror="this.style.display='none'"><span>Shopify</span></div>
+        <div class="tool-pill"><img src="https://cdn.simpleicons.org/airtable/18bfff" alt="" onerror="this.style.display='none'"><span>Airtable</span></div>
+        <div class="tool-pill"><img src="https://cdn.simpleicons.org/notion/ffffff" alt="" onerror="this.style.display='none'"><span>Notion</span></div>
+        <div class="tool-pill"><img src="https://cdn.simpleicons.org/googlesheets/34a853" alt="" onerror="this.style.display='none'"><span>Google Sheets</span></div>
+        <div class="tool-pill"><img src="images/ghl.jpg" alt="" onerror="this.style.display='none'"><span>GoHighLevel</span></div>
+        <!-- duplicate set for seamless infinite scroll -->
+        <div class="tool-pill"><img src="https://cdn.simpleicons.org/zapier/ff4a00" alt="" onerror="this.style.display='none'"><span>Zapier</span></div>
+        <div class="tool-pill"><img src="https://cdn.simpleicons.org/make/6d00cc" alt="" onerror="this.style.display='none'"><span>Make</span></div>
+        <div class="tool-pill"><img src="https://cdn.simpleicons.org/n8n/ea4b71" alt="" onerror="this.style.display='none'"><span>n8n</span></div>
+        <div class="tool-pill"><img src="https://cdn.simpleicons.org/hubspot/ff7a59" alt="" onerror="this.style.display='none'"><span>HubSpot</span></div>
+        <div class="tool-pill"><img src="images/monday.png" alt="" onerror="this.style.display='none'"><span>Monday.com</span></div>
+        <div class="tool-pill"><img src="https://cdn.simpleicons.org/shopify/96bf48" alt="" onerror="this.style.display='none'"><span>Shopify</span></div>
+        <div class="tool-pill"><img src="https://cdn.simpleicons.org/airtable/18bfff" alt="" onerror="this.style.display='none'"><span>Airtable</span></div>
+        <div class="tool-pill"><img src="https://cdn.simpleicons.org/notion/ffffff" alt="" onerror="this.style.display='none'"><span>Notion</span></div>
+        <div class="tool-pill"><img src="https://cdn.simpleicons.org/googlesheets/34a853" alt="" onerror="this.style.display='none'"><span>Google Sheets</span></div>
+        <div class="tool-pill"><img src="images/ghl.jpg" alt="" onerror="this.style.display='none'"><span>GoHighLevel</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ PORTFOLIO ═══════════════════ -->
+  <section class="portfolio section" id="portfolio">
+    <div class="container">
+      <div class="section-head">
+        <h2>My Portfolio</h2>
+        <p>Take a look at Pacondo's work — here's what has been built lately: tools, and more effective.</p>
+      </div>
+
+      <div class="tab-bar">
+        <button class="tab-btn active" data-filter="zapier">Zapier Automation</button>
+        <button class="tab-btn" data-filter="make">Make Automation</button>
+        <button class="tab-btn" data-filter="crm-funnels">CRM Funnels</button>
+        <button class="tab-btn" data-filter="crm">CRM Automation</button>
+        <button class="tab-btn" data-filter="sms">SMS Workflows</button>
+        <button class="tab-btn" data-filter="ai">SMS AI Agents</button>
+      </div>
+
+      <div class="portfolio-grid" id="portfolioGrid">
+
+        <!-- PORTFOLIO ITEM 1 -->
+        <article class="card port-card animate-up" data-category="zapier">
+          <!-- REPLACE src with your screenshot: images/portfolio/portfolio1.jpg -->
+          <div class="port-thumb" style="background: linear-gradient(135deg,#1a2040,#1e2d55)">
+            <img src="images/portfolio/portfolio1.jpg" alt="Form Submission Automation" />
+          </div>
+          <div class="port-body">
+            <h3>Form Submission — Instant Email Notification</h3>
+            <p>Automated workflow that sends instant email notifications whenever a form is submitted, ensuring immediate follow-up on leads.</p>
+            <div class="tag-row">
+              <span class="tag">Zapier</span>
+              <span class="tag">Automation</span>
+              <span class="tag">Notifications</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- PORTFOLIO ITEM 2 -->
+        <article class="card port-card animate-up" data-category="crm">
+          <div class="port-thumb" style="background: linear-gradient(135deg,#1a2040,#1e2d55)">
+            <img src="images/portfolio/portfolio2.jpg" alt="Lead Nurturing Automation" />
+          </div>
+          <div class="port-body">
+            <h3>Lead Nurturing Automation — SMS, Calls &amp; Smart Router</h3>
+            <p>A comprehensive CRM workflow that automates lead nurturing through intelligent multi-channel communication, ensuring no lead falls through the cracks.</p>
+            <div class="tag-row">
+              <span class="tag">SMS</span>
+              <span class="tag">CRM</span>
+              <span class="tag">Lead Nurturing</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- PORTFOLIO ITEM 3 -->
+        <article class="card port-card animate-up" data-category="ai">
+          <div class="port-thumb" style="background: linear-gradient(135deg,#1a2040,#1e2d55)">
+            <img src="images/portfolio/portfolio3.jpg" alt="SMS AI Lead Qualification" />
+          </div>
+          <div class="port-body">
+            <h3>SMS AI Lead Qualification Workflow</h3>
+            <p>An intelligent SMS automation system that qualifies leads in real-time through AI-powered conversations to identify high-intent prospects.</p>
+            <div class="tag-row">
+              <span class="tag">AI</span>
+              <span class="tag">SMS</span>
+              <span class="tag">Lead Qualification</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ CERTIFICATIONS ═══════════════════ -->
+  <section class="certs section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Professional Certifications</h2>
+        <p>Verified credentials demonstrating expertise in automation platforms and CRM systems.</p>
+      </div>
+      <div class="certs-grid">
+
+        <div class="card cert-card animate-up">
+          <div class="cert-thumb cert-clickable" data-src="images/Certificate/certificate-20260102203859 (1).png">
+            <img src="images/Certificate/certificate-20260102203859 (1).png" alt="HighLevel CRM Certificate" />
+          </div>
+          <div class="cert-body">
+            <h3>HighLevel CRM Full Training</h3>
+            <p>Technical Virtual Assistant, PV &mdash; January 2025</p>
+            <div class="tag-row">
+              <span class="tag">CRM</span>
+              <span class="tag">GoHighLevel</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card cert-card animate-up">
+          <div class="cert-thumb cert-clickable" data-src="images/Certificate/certificate-20260102204046 (1).png">
+            <img src="images/Certificate/certificate-20260102204046 (1).png" alt="Make.com Certificate" />
+          </div>
+          <div class="cert-body">
+            <h3>No-Code Automation with Make.com</h3>
+            <p>Technical Virtual Assistant, PV &mdash; January 2025</p>
+            <div class="tag-row">
+              <span class="tag">Make</span>
+              <span class="tag">Automation</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card cert-card animate-up">
+          <div class="cert-thumb cert-clickable" data-src="images/Certificate/certificate-20260102204119 (1).png">
+            <img src="images/Certificate/certificate-20260102204119 (1).png" alt="Zapier Certificate" />
+          </div>
+          <div class="cert-body">
+            <h3>No-Code Automation with Zapier</h3>
+            <p>Technical Virtual Assistant, PV &mdash; January 2025</p>
+            <div class="tag-row">
+              <span class="tag">Zapier</span>
+              <span class="tag">Automation</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ TESTIMONIALS ═══════════════════ -->
+  <section class="testimonials section" id="testimonials">
+    <div class="container">
+      <div class="section-head">
+        <h2>What Clients Say</h2>
+        <p>Don't just take my word for it — here's what my clients have to say about working with me.</p>
+      </div>
+      <div class="testi-grid">
+
+        <div class="card testi-card animate-up">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Pacondo completely transformed our first workflow! He set up a Zapier automation that saves us hours of manual work. His attention to detail is incredible. Highly recommended!"</p>
+          <div class="testi-author">
+            <div class="avatar">SM</div>
+            <div>
+              <strong>Sarah Mitchell</strong>
+              <span>Marketing Business Owner</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card testi-card animate-up">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Working with Pacondo is incredible. He built a complete automation pipeline for our sales team in record time. The quality of work is exceptional. Highly recommend!"</p>
+          <div class="testi-author">
+            <div class="avatar">DT</div>
+            <div>
+              <strong>David Thompson</strong>
+              <span>Sales Operations Director</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card testi-card animate-up">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"The automation Pacondo built for our lead qualification is top-tier. He understands business processes and always delivers quality work on time."</p>
+          <div class="testi-author">
+            <div class="avatar">JL</div>
+            <div>
+              <strong>Jennifer Luis</strong>
+              <span>Startup Founder</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ STATS ═══════════════════ -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat animate-up">
+          <div class="stat-number">4.9 <span class="stat-star">&#11088;</span></div>
+          <div class="stat-label">Client Rating</div>
+        </div>
+        <div class="stat animate-up">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Success Rate</div>
+        </div>
+        <div class="stat animate-up">
+          <div class="stat-number">24/7</div>
+          <div class="stat-label">Support Availability</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ CONTACT ═══════════════════ -->
+  <section class="contact section" id="contact">
+    <div class="container">
+      <div class="section-head">
+        <h2>Let's Connect</h2>
+        <p>Have a project in mind? Let's talk about your automation projects, process optimization opportunities, and technical needs.</p>
+      </div>
+
+      <div class="contact-layout">
+
+        <div class="contact-calendar">
+          <h3>Schedule a Call</h3>
+          <!--
+            REPLACE this placeholder div with your Calendly or Cal.com embed.
+            Example Calendly snippet:
+            <div class="calendly-inline-widget" data-url="https://calendly.com/YOUR-USERNAME" style="min-width:320px;height:700px;"></div>
+            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+          -->
+          <div class="calendar-placeholder">
+            <div class="cal-icon">&#128197;</div>
+            <p>Your calendar booking widget goes here.</p>
+            <p>Replace this block with your Calendly or Cal.com embed code.</p>
+          </div>
+        </div>
+
+        <div class="contact-links-col">
+          <h3>Other Ways to Reach Me</h3>
+          <div class="contact-links">
+            <!-- REPLACE href values with your actual links -->
+            <a href="#" class="contact-link">
+              <span class="clink-icon">&#127908;</span>
+              <div>
+                <strong>Hire me on Upwork</strong>
+                <span>View my profile</span>
+              </div>
+            </a>
+            <a href="#" class="contact-link">
+              <span class="clink-icon">&#128188;</span>
+              <div>
+                <strong>LinkedIn</strong>
+                <span>View my profile</span>
+              </div>
+            </a>
+            <!-- REPLACE with your actual phone number -->
+            <a href="tel:+639XXXXXXXX" class="contact-link">
+              <span class="clink-icon">&#128222;</span>
+              <div>
+                <strong>+639XXXXXXXX</strong>
+                <span>Call me</span>
+              </div>
+            </a>
+            <a href="#" class="contact-link">
+              <span class="clink-icon">&#128172;</span>
+              <div>
+                <strong>Connect with me</strong>
+                <span>Social media</span>
+              </div>
+            </a>
+            <a href="mailto:pacondorote43@gmail.com" class="contact-link">
+              <span class="clink-icon">&#9993;&#65039;</span>
+              <div>
+                <strong>pacondorote43@gmail.com</strong>
+                <span>Email me</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ LIGHTBOX ═══════════════════ -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose">&times;</button>
+    <img class="lightbox-img" id="lightboxImg" src="" alt="Certificate" />
+  </div>
+
+  <!-- ═══════════════════ FOOTER ═══════════════════ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">PacondoTechVA</div>
+        <p>Building smart automation solutions that make a difference.</p>
+      </div>
+      <div class="footer-nav">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-social">
+        <h4>Follow Me</h4>
+        <div class="social-row">
+          <!-- REPLACE href values with your actual social links -->
+          <a href="#" class="social-btn" aria-label="Facebook">f</a>
+          <a href="#" class="social-btn" aria-label="Twitter / X">X</a>
+          <a href="#" class="social-btn" aria-label="LinkedIn">in</a>
+          <a href="#" class="social-btn" aria-label="Instagram">ig</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; 2025 PacondoTechVA. All rights reserved. Building smart automation solutions that make a difference.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,4 +1,22 @@
 /* ═══════════════════════════════════
+   CUSTOM CURSOR
+═══════════════════════════════════ */
+const cursorDot  = document.getElementById('cursorDot');
+const cursorRing = document.getElementById('cursorRing');
+
+document.addEventListener('mousemove', (e) => {
+  cursorDot.style.left  = e.clientX + 'px';
+  cursorDot.style.top   = e.clientY + 'px';
+  cursorRing.style.left = e.clientX + 'px';
+  cursorRing.style.top  = e.clientY + 'px';
+});
+
+document.querySelectorAll('a, button').forEach(el => {
+  el.addEventListener('mouseenter', () => { cursorDot.classList.add('hover'); cursorRing.classList.add('hover'); });
+  el.addEventListener('mouseleave', () => { cursorDot.classList.remove('hover'); cursorRing.classList.remove('hover'); });
+});
+
+/* ═══════════════════════════════════
    NAVBAR — scroll effect + mobile menu
 ═══════════════════════════════════ */
 const navbar    = document.getElementById('navbar');
@@ -74,27 +92,84 @@ document.querySelectorAll('.animate-up').forEach(el => {
 /* ═══════════════════════════════════
    PORTFOLIO TABS
 ═══════════════════════════════════ */
-const tabBtns   = document.querySelectorAll('.tab-btn');
-const portCards = document.querySelectorAll('.port-card');
+const tabBtns    = document.querySelectorAll('.tab-btn');
+const portCards  = document.querySelectorAll('.port-card');
+const ghlSubTabs = document.getElementById('ghlSubTabs');
+const n8nSubTabs = document.getElementById('n8nSubTabs');
+
+const subTabBars = { ghl: ghlSubTabs, n8n: n8nSubTabs };
+
+let activeCategory  = 'zapier';
+let activeSubFilter = 'all';
+
+function showCards(category, subfilter) {
+  portCards.forEach(card => {
+    const matchCat = card.dataset.category === category;
+    const matchSub = subfilter === 'all' || !card.dataset.subcategory || card.dataset.subcategory === subfilter;
+    const show = matchCat && matchSub;
+    card.style.display = show ? '' : 'none';
+    if (show) {
+      card.classList.remove('in-view');
+      requestAnimationFrame(() => setTimeout(() => card.classList.add('in-view'), 60));
+    }
+  });
+}
 
 tabBtns.forEach(btn => {
   btn.addEventListener('click', () => {
     tabBtns.forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
+    activeCategory  = btn.dataset.filter;
+    activeSubFilter = 'all';
 
-    const filter = btn.dataset.filter;
-    portCards.forEach(card => {
-      const show = filter === 'all' || card.dataset.category === filter;
-      card.style.display = show ? '' : 'none';
-      if (show) {
-        card.classList.remove('in-view');
-        requestAnimationFrame(() => setTimeout(() => card.classList.add('in-view'), 60));
-      }
-    });
+    Object.values(subTabBars).forEach(bar => bar && bar.classList.remove('visible'));
+
+    const bar = subTabBars[activeCategory];
+    if (bar) {
+      bar.classList.add('visible');
+      bar.querySelectorAll('.sub-tab-btn').forEach(b => b.classList.toggle('active', b.dataset.subfilter === 'all'));
+    }
+
+    showCards(activeCategory, activeSubFilter);
+  });
+});
+
+document.querySelectorAll('.sub-tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const bar = btn.closest('.sub-tab-bar');
+    bar.querySelectorAll('.sub-tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeSubFilter = btn.dataset.subfilter;
+    showCards(activeCategory, activeSubFilter);
   });
 });
 
 if (tabBtns.length) tabBtns[0].click();
+
+/* ═══════════════════════════════════
+   RESUME MODAL
+═══════════════════════════════════ */
+const resumeModal = document.getElementById('resumeModal');
+const resumeFrame = document.getElementById('resumeFrame');
+const resumeClose = document.getElementById('resumeClose');
+const RESUME_URL  = 'https://drive.google.com/file/d/1EcTcWl2VAlZBifFtNmM-GvL7lCS18QB0/preview';
+
+document.getElementById('resumeBtn').addEventListener('click', (e) => {
+  e.preventDefault();
+  resumeFrame.src = RESUME_URL;
+  resumeModal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+});
+
+function closeResume() {
+  resumeModal.classList.remove('open');
+  resumeFrame.src = '';
+  document.body.style.overflow = '';
+}
+
+resumeClose.addEventListener('click', closeResume);
+resumeModal.addEventListener('click', (e) => { if (e.target === resumeModal) closeResume(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeResume(); });
 
 /* ═══════════════════════════════════
    CERTIFICATE LIGHTBOX

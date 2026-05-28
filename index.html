@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet" />
 </head>
 <body>
 
@@ -46,13 +46,21 @@
     <div class="sparkle sp6">→</div>
     <div class="sparkle sp7">⟳</div>
 
+    <div class="sparkle sp-logo sp-zapier"><img src="https://cdn.simpleicons.org/zapier/ff4a00" alt="Zapier" /></div>
+    <div class="sparkle sp-logo sp-ghl"><img src="images/ghl.jpg" alt="GoHighLevel" /></div>
+    <div class="sparkle sp-logo sp-n8n"><img src="https://cdn.simpleicons.org/n8n/ea4b71" alt="n8n" /></div>
+    <div class="sparkle sp-logo sp-make"><img src="https://cdn.simpleicons.org/make/6d00cc" alt="Make" /></div>
+    <div class="sparkle sp-logo sp-monday"><img src="images/monday.png" alt="Monday.com" /></div>
+    <div class="sparkle sp-logo sp-hubspot"><img src="https://cdn.simpleicons.org/hubspot/ff7a59" alt="HubSpot" /></div>
+    <div class="sparkle sp-logo sp-claude"><img src="https://cdn.simpleicons.org/anthropic/cc785c" alt="Claude.ai" /></div>
+
     <div class="container hero-inner">
       <div class="hero-text">
         <div class="badge">
           <span class="badge-line"></span>
           Open for new project
         </div>
-        <h1>Hey!<br /><span class="name-muted">I'm </span><span class="name-accent">Pacondo</span></h1>
+        <h1><span class="line1">Hey!</span><br /><span class="name-muted">I'm </span><span class="name-accent">Pacondo</span></h1>
         <p class="hero-subtitle">Your Technical Virtual Assistant</p>
         <p class="hero-desc">
           Passionate about building efficient, automated workflows that save time,
@@ -62,7 +70,7 @@
         <div class="hero-btns">
           <a href="#portfolio" class="btn-primary">View my work &rarr;</a>
           <!-- REPLACE href with your actual resume link -->
-          <a href="#" class="btn-outline"><span class="btn-resume-icon">&#128196;</span> Resume</a>
+          <a href="#" class="btn-outline" id="resumeBtn"><span class="btn-resume-icon">&#128196;</span> Resume</a>
         </div>
       </div>
 
@@ -197,61 +205,137 @@
       </div>
 
       <div class="tab-bar">
-        <button class="tab-btn active" data-filter="zapier">Zapier Automation</button>
-        <button class="tab-btn" data-filter="make">Make Automation</button>
-        <button class="tab-btn" data-filter="crm-funnels">CRM Funnels</button>
-        <button class="tab-btn" data-filter="crm">CRM Automation</button>
-        <button class="tab-btn" data-filter="sms">SMS Workflows</button>
-        <button class="tab-btn" data-filter="ai">SMS AI Agents</button>
+        <button class="tab-btn active" data-filter="zapier">Zapier</button>
+        <button class="tab-btn" data-filter="ghl">GoHighLevel</button>
+        <button class="tab-btn" data-filter="n8n">N8N</button>
+        <button class="tab-btn" data-filter="make">Make</button>
+      </div>
+
+      <!-- GHL Sub-tabs -->
+      <div class="sub-tab-bar" id="ghlSubTabs">
+        <button class="sub-tab-btn active" data-subfilter="all">All</button>
+        <button class="sub-tab-btn" data-subfilter="landing-page">Landing Page</button>
+        <button class="sub-tab-btn" data-subfilter="workflows">Workflows</button>
+        <button class="sub-tab-btn" data-subfilter="complete-agents">Complete Agents</button>
+      </div>
+
+      <!-- N8N Sub-tabs -->
+      <div class="sub-tab-bar" id="n8nSubTabs">
+        <button class="sub-tab-btn active" data-subfilter="all">All</button>
+        <button class="sub-tab-btn" data-subfilter="ai-agent">AI Agent</button>
+        <button class="sub-tab-btn" data-subfilter="workflows">Workflows</button>
       </div>
 
       <div class="portfolio-grid" id="portfolioGrid">
 
-        <!-- PORTFOLIO ITEM 1 -->
+        <!-- ZAPIER -->
         <article class="card port-card animate-up" data-category="zapier">
-          <!-- REPLACE src with your screenshot: images/portfolio/portfolio1.jpg -->
-          <div class="port-thumb" style="background: linear-gradient(135deg,#1a2040,#1e2d55)">
-            <img src="images/portfolio/portfolio1.jpg" alt="Form Submission Automation" />
+          <div class="port-thumb" style="background: linear-gradient(135deg,#ff4a00,#ff6d35)">
+            <img src="images/portfolio/zapier1.jpg" alt="Zapier Automation" onerror="this.style.display='none'" />
           </div>
           <div class="port-body">
             <h3>Form Submission — Instant Email Notification</h3>
             <p>Automated workflow that sends instant email notifications whenever a form is submitted, ensuring immediate follow-up on leads.</p>
             <div class="tag-row">
               <span class="tag">Zapier</span>
+              <span class="tag">Email</span>
               <span class="tag">Automation</span>
-              <span class="tag">Notifications</span>
             </div>
           </div>
         </article>
 
-        <!-- PORTFOLIO ITEM 2 -->
-        <article class="card port-card animate-up" data-category="crm">
-          <div class="port-thumb" style="background: linear-gradient(135deg,#1a2040,#1e2d55)">
-            <img src="images/portfolio/portfolio2.jpg" alt="Lead Nurturing Automation" />
+        <!-- GHL — Landing Page -->
+        <article class="card port-card animate-up" data-category="ghl" data-subcategory="landing-page">
+          <div class="port-thumb" style="background: linear-gradient(135deg,#00b4d8,#0077b6)">
+            <img src="images/portfolio/ghl-landing.jpg" alt="GHL Landing Page" onerror="this.style.display='none'" />
           </div>
           <div class="port-body">
-            <h3>Lead Nurturing Automation — SMS, Calls &amp; Smart Router</h3>
-            <p>A comprehensive CRM workflow that automates lead nurturing through intelligent multi-channel communication, ensuring no lead falls through the cracks.</p>
+            <h3>High-Converting Landing Page</h3>
+            <p>Custom GoHighLevel landing page built to capture leads and drive conversions with optimized copy and funnel design.</p>
             <div class="tag-row">
-              <span class="tag">SMS</span>
+              <span class="tag">GoHighLevel</span>
+              <span class="tag">Landing Page</span>
+              <span class="tag">Funnels</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- GHL — Workflows -->
+        <article class="card port-card animate-up" data-category="ghl" data-subcategory="workflows">
+          <div class="port-thumb" style="background: linear-gradient(135deg,#00b4d8,#0077b6)">
+            <img src="images/portfolio/ghl-workflow.jpg" alt="GHL Workflow" onerror="this.style.display='none'" />
+          </div>
+          <div class="port-body">
+            <h3>Lead Nurturing — SMS, Calls &amp; Smart Router</h3>
+            <p>A comprehensive GoHighLevel workflow that automates lead nurturing through intelligent multi-channel communication.</p>
+            <div class="tag-row">
+              <span class="tag">GoHighLevel</span>
+              <span class="tag">Workflows</span>
               <span class="tag">CRM</span>
-              <span class="tag">Lead Nurturing</span>
             </div>
           </div>
         </article>
 
-        <!-- PORTFOLIO ITEM 3 -->
-        <article class="card port-card animate-up" data-category="ai">
-          <div class="port-thumb" style="background: linear-gradient(135deg,#1a2040,#1e2d55)">
-            <img src="images/portfolio/portfolio3.jpg" alt="SMS AI Lead Qualification" />
+        <!-- GHL — Complete Agents -->
+        <article class="card port-card animate-up" data-category="ghl" data-subcategory="complete-agents">
+          <div class="port-thumb" style="background: linear-gradient(135deg,#00b4d8,#0077b6)">
+            <img src="images/portfolio/ghl-agent.jpg" alt="GHL Complete Agent" onerror="this.style.display='none'" />
           </div>
           <div class="port-body">
-            <h3>SMS AI Lead Qualification Workflow</h3>
-            <p>An intelligent SMS automation system that qualifies leads in real-time through AI-powered conversations to identify high-intent prospects.</p>
+            <h3>Complete AI Agent Setup</h3>
+            <p>Full GoHighLevel AI agent configured with custom prompts, conversation flows, and automated follow-ups to handle leads 24/7.</p>
             <div class="tag-row">
-              <span class="tag">AI</span>
-              <span class="tag">SMS</span>
-              <span class="tag">Lead Qualification</span>
+              <span class="tag">GoHighLevel</span>
+              <span class="tag">AI Agent</span>
+              <span class="tag">Automation</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- N8N — AI Agent -->
+        <article class="card port-card animate-up" data-category="n8n" data-subcategory="ai-agent">
+          <div class="port-thumb" style="background: linear-gradient(135deg,#ea4b71,#bf3054)">
+            <img src="images/portfolio/n8n-agent.jpg" alt="N8N AI Agent" onerror="this.style.display='none'" />
+          </div>
+          <div class="port-body">
+            <h3>AI Agent — Automated Lead Qualification</h3>
+            <p>N8N AI agent that qualifies incoming leads in real-time, scores them, and routes them to the right pipeline automatically.</p>
+            <div class="tag-row">
+              <span class="tag">N8N</span>
+              <span class="tag">AI Agent</span>
+              <span class="tag">Automation</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- N8N — Workflows -->
+        <article class="card port-card animate-up" data-category="n8n" data-subcategory="workflows">
+          <div class="port-thumb" style="background: linear-gradient(135deg,#ea4b71,#bf3054)">
+            <img src="images/portfolio/n8n-workflow.jpg" alt="N8N Workflow" onerror="this.style.display='none'" />
+          </div>
+          <div class="port-body">
+            <h3>AI-Powered Data Pipeline with N8N</h3>
+            <p>End-to-end N8N workflow that collects, processes, and routes data automatically using AI nodes and webhooks.</p>
+            <div class="tag-row">
+              <span class="tag">N8N</span>
+              <span class="tag">Workflows</span>
+              <span class="tag">Webhooks</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- MAKE -->
+        <article class="card port-card animate-up" data-category="make">
+          <div class="port-thumb" style="background: linear-gradient(135deg,#6d28d9,#4c1d95)">
+            <img src="images/portfolio/make1.jpg" alt="Make Automation" onerror="this.style.display='none'" />
+          </div>
+          <div class="port-body">
+            <h3>Multi-App Sync Scenario with Make</h3>
+            <p>Complex Make scenario that syncs data across multiple apps in real time — keeping CRM, spreadsheets, and communication tools in perfect sync.</p>
+            <div class="tag-row">
+              <span class="tag">Make</span>
+              <span class="tag">Integration</span>
+              <span class="tag">Sync</span>
             </div>
           </div>
         </article>
@@ -324,42 +408,6 @@
       </div>
       <div class="testi-grid">
 
-        <div class="card testi-card animate-up">
-          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p>"Pacondo completely transformed our first workflow! He set up a Zapier automation that saves us hours of manual work. His attention to detail is incredible. Highly recommended!"</p>
-          <div class="testi-author">
-            <div class="avatar">SM</div>
-            <div>
-              <strong>Sarah Mitchell</strong>
-              <span>Marketing Business Owner</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="card testi-card animate-up">
-          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p>"Working with Pacondo is incredible. He built a complete automation pipeline for our sales team in record time. The quality of work is exceptional. Highly recommend!"</p>
-          <div class="testi-author">
-            <div class="avatar">DT</div>
-            <div>
-              <strong>David Thompson</strong>
-              <span>Sales Operations Director</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="card testi-card animate-up">
-          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p>"The automation Pacondo built for our lead qualification is top-tier. He understands business processes and always delivers quality work on time."</p>
-          <div class="testi-author">
-            <div class="avatar">JL</div>
-            <div>
-              <strong>Jennifer Luis</strong>
-              <span>Startup Founder</span>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
   </section>
@@ -396,17 +444,8 @@
 
         <div class="contact-calendar">
           <h3>Schedule a Call</h3>
-          <!--
-            REPLACE this placeholder div with your Calendly or Cal.com embed.
-            Example Calendly snippet:
-            <div class="calendly-inline-widget" data-url="https://calendly.com/YOUR-USERNAME" style="min-width:320px;height:700px;"></div>
-            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-          -->
-          <div class="calendar-placeholder">
-            <div class="cal-icon">&#128197;</div>
-            <p>Your calendar booking widget goes here.</p>
-            <p>Replace this block with your Calendly or Cal.com embed code.</p>
-          </div>
+          <div class="calendly-inline-widget" data-url="https://calendly.com/pacondorote43/30min" style="min-width:320px;height:700px;"></div>
+          <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
         </div>
 
         <div class="contact-links-col">
@@ -457,6 +496,16 @@
   </section>
 
   <!-- ═══════════════════ LIGHTBOX ═══════════════════ -->
+  <!-- ═══════════════════ RESUME MODAL ═══════════════════ -->
+  <!-- ═══════════════════ CUSTOM CURSOR ═══════════════════ -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <div class="resume-modal" id="resumeModal">
+    <button class="lightbox-close" id="resumeClose">&times;</button>
+    <iframe id="resumeFrame" src="" allowfullscreen></iframe>
+  </div>
+
   <div class="lightbox" id="lightbox">
     <button class="lightbox-close" id="lightboxClose">&times;</button>
     <img class="lightbox-img" id="lightboxImg" src="" alt="Certificate" />

@@ -1,20 +1,65 @@
 /* ═══════════════════════════════════
-   CUSTOM CURSOR
+   CURSOR MIRAGE TRAIL
 ═══════════════════════════════════ */
-const cursorDot  = document.getElementById('cursorDot');
-const cursorRing = document.getElementById('cursorRing');
+(function () {
+  const TRAIL_COUNT = 8;
+  const container   = document.getElementById('cursorMirage');
+  const dots        = [];
 
-document.addEventListener('mousemove', (e) => {
-  cursorDot.style.left  = e.clientX + 'px';
-  cursorDot.style.top   = e.clientY + 'px';
-  cursorRing.style.left = e.clientX + 'px';
-  cursorRing.style.top  = e.clientY + 'px';
-});
+  for (let i = 0; i < TRAIL_COUNT; i++) {
+    const el = document.createElement('div');
+    el.className = 'cursor-trail';
+    el.style.opacity = (1 - i / TRAIL_COUNT) * 0.55;
+    el.style.transform = `translate(-50%,-50%) scale(${1 - i * 0.07})`;
+    container.appendChild(el);
+    dots.push({ el, x: -200, y: -200 });
+  }
 
-document.querySelectorAll('a, button').forEach(el => {
-  el.addEventListener('mouseenter', () => { cursorDot.classList.add('hover'); cursorRing.classList.add('hover'); });
-  el.addEventListener('mouseleave', () => { cursorDot.classList.remove('hover'); cursorRing.classList.remove('hover'); });
-});
+  let mouseX = -200, mouseY = -200;
+
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  function animate() {
+    let x = mouseX, y = mouseY;
+    dots.forEach((dot, i) => {
+      dot.el.style.left = x + 'px';
+      dot.el.style.top  = y + 'px';
+      const prev = dots[i] || { x, y };
+      x = prev.x + (x - prev.x) * 0.5;
+      y = prev.y + (y - prev.y) * 0.5;
+      dot.x = x;
+      dot.y = y;
+    });
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+
+/* ═══════════════════════════════════
+   SUBTITLE FLIP ROTATOR
+═══════════════════════════════════ */
+const subtitleEl = document.getElementById('heroSubtitle');
+const subtitles  = [
+  'Your Technical Virtual Assistant',
+  'Your Automation Specialist',
+  'Your GHL Expert'
+];
+let subtitleIdx = 0;
+
+setInterval(() => {
+  subtitleEl.classList.add('flipping-out');
+  setTimeout(() => {
+    subtitleIdx = (subtitleIdx + 1) % subtitles.length;
+    subtitleEl.textContent = subtitles[subtitleIdx];
+    subtitleEl.classList.remove('flipping-out');
+    subtitleEl.classList.add('flipping-in');
+    setTimeout(() => subtitleEl.classList.remove('flipping-in'), 350);
+  }, 350);
+}, 3000);
+
 
 /* ═══════════════════════════════════
    NAVBAR — scroll effect + mobile menu

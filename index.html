@@ -61,7 +61,7 @@
           Open for new project
         </div>
         <h1><span class="line1">Hey!</span><br /><span class="name-muted">I'm </span><span class="name-accent">Pacondo</span></h1>
-        <p class="hero-subtitle">Your Technical Virtual Assistant</p>
+        <p class="hero-subtitle" id="heroSubtitle">Your Technical Virtual Assistant</p>
         <p class="hero-desc">
           Passionate about building efficient, automated workflows that save time,
           reduce errors, and keep your systems running smoothly. Let's streamline
@@ -216,7 +216,7 @@
         <button class="sub-tab-btn active" data-subfilter="all">All</button>
         <button class="sub-tab-btn" data-subfilter="landing-page">Landing Page</button>
         <button class="sub-tab-btn" data-subfilter="workflows">Workflows</button>
-        <button class="sub-tab-btn" data-subfilter="complete-agents">Complete Agents</button>
+        <button class="sub-tab-btn" data-subfilter="funnel">Funnel</button>
       </div>
 
       <!-- N8N Sub-tabs -->
@@ -228,114 +228,34 @@
 
       <div class="portfolio-grid" id="portfolioGrid">
 
-        <!-- ZAPIER -->
+        <!-- ZAPIER — Automated Lead Enrichment -->
         <article class="card port-card animate-up" data-category="zapier">
-          <div class="port-thumb" style="background: linear-gradient(135deg,#ff4a00,#ff6d35)">
-            <img src="images/portfolio/zapier1.jpg" alt="Zapier Automation" onerror="this.style.display='none'" />
+          <div class="port-thumb cert-clickable" data-src="images/Zapier/Automated Lead Enrichment.png" style="background: linear-gradient(135deg,#ff4a00,#ff6d35)">
+            <img src="images/Zapier/Automated Lead Enrichment.png" alt="Automated Lead Enrichment" />
           </div>
           <div class="port-body">
-            <h3>Form Submission — Instant Email Notification</h3>
-            <p>Automated workflow that sends instant email notifications whenever a form is submitted, ensuring immediate follow-up on leads.</p>
+            <h3>Automated Lead Enrichment</h3>
+            <p>A Zapier workflow that automatically captures new leads and enriches them with additional data — pulling contact details, company info, and social profiles — then pushes the complete record straight into the CRM, eliminating manual data entry and ensuring your sales team always works with full context.</p>
             <div class="tag-row">
               <span class="tag">Zapier</span>
-              <span class="tag">Email</span>
-              <span class="tag">Automation</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- GHL — Landing Page -->
-        <article class="card port-card animate-up" data-category="ghl" data-subcategory="landing-page">
-          <div class="port-thumb" style="background: linear-gradient(135deg,#00b4d8,#0077b6)">
-            <img src="images/portfolio/ghl-landing.jpg" alt="GHL Landing Page" onerror="this.style.display='none'" />
-          </div>
-          <div class="port-body">
-            <h3>High-Converting Landing Page</h3>
-            <p>Custom GoHighLevel landing page built to capture leads and drive conversions with optimized copy and funnel design.</p>
-            <div class="tag-row">
-              <span class="tag">GoHighLevel</span>
-              <span class="tag">Landing Page</span>
-              <span class="tag">Funnels</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- GHL — Workflows -->
-        <article class="card port-card animate-up" data-category="ghl" data-subcategory="workflows">
-          <div class="port-thumb" style="background: linear-gradient(135deg,#00b4d8,#0077b6)">
-            <img src="images/portfolio/ghl-workflow.jpg" alt="GHL Workflow" onerror="this.style.display='none'" />
-          </div>
-          <div class="port-body">
-            <h3>Lead Nurturing — SMS, Calls &amp; Smart Router</h3>
-            <p>A comprehensive GoHighLevel workflow that automates lead nurturing through intelligent multi-channel communication.</p>
-            <div class="tag-row">
-              <span class="tag">GoHighLevel</span>
-              <span class="tag">Workflows</span>
+              <span class="tag">Lead Enrichment</span>
               <span class="tag">CRM</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- GHL — Complete Agents -->
-        <article class="card port-card animate-up" data-category="ghl" data-subcategory="complete-agents">
-          <div class="port-thumb" style="background: linear-gradient(135deg,#00b4d8,#0077b6)">
-            <img src="images/portfolio/ghl-agent.jpg" alt="GHL Complete Agent" onerror="this.style.display='none'" />
-          </div>
-          <div class="port-body">
-            <h3>Complete AI Agent Setup</h3>
-            <p>Full GoHighLevel AI agent configured with custom prompts, conversation flows, and automated follow-ups to handle leads 24/7.</p>
-            <div class="tag-row">
-              <span class="tag">GoHighLevel</span>
-              <span class="tag">AI Agent</span>
-              <span class="tag">Automation</span>
             </div>
           </div>
         </article>
 
         <!-- N8N — AI Agent -->
         <article class="card port-card animate-up" data-category="n8n" data-subcategory="ai-agent">
-          <div class="port-thumb" style="background: linear-gradient(135deg,#ea4b71,#bf3054)">
-            <img src="images/portfolio/n8n-agent.jpg" alt="N8N AI Agent" onerror="this.style.display='none'" />
+          <div class="port-thumb cert-clickable" data-src="images/n8n/FB Page Farm Agent.png" style="background: linear-gradient(135deg,#ea4b71,#bf3054)">
+            <img src="images/n8n/FB Page Farm Agent.png" alt="FB Page Farm Agent" />
           </div>
           <div class="port-body">
-            <h3>AI Agent — Automated Lead Qualification</h3>
-            <p>N8N AI agent that qualifies incoming leads in real-time, scores them, and routes them to the right pipeline automatically.</p>
+            <h3>FB Page Farm Agent</h3>
+            <p>N8N AI agent integrated with Facebook Page, using Google Gemini and Simple Memory to handle and respond to messages automatically.</p>
             <div class="tag-row">
               <span class="tag">N8N</span>
               <span class="tag">AI Agent</span>
-              <span class="tag">Automation</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- N8N — Workflows -->
-        <article class="card port-card animate-up" data-category="n8n" data-subcategory="workflows">
-          <div class="port-thumb" style="background: linear-gradient(135deg,#ea4b71,#bf3054)">
-            <img src="images/portfolio/n8n-workflow.jpg" alt="N8N Workflow" onerror="this.style.display='none'" />
-          </div>
-          <div class="port-body">
-            <h3>AI-Powered Data Pipeline with N8N</h3>
-            <p>End-to-end N8N workflow that collects, processes, and routes data automatically using AI nodes and webhooks.</p>
-            <div class="tag-row">
-              <span class="tag">N8N</span>
-              <span class="tag">Workflows</span>
-              <span class="tag">Webhooks</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- MAKE -->
-        <article class="card port-card animate-up" data-category="make">
-          <div class="port-thumb" style="background: linear-gradient(135deg,#6d28d9,#4c1d95)">
-            <img src="images/portfolio/make1.jpg" alt="Make Automation" onerror="this.style.display='none'" />
-          </div>
-          <div class="port-body">
-            <h3>Multi-App Sync Scenario with Make</h3>
-            <p>Complex Make scenario that syncs data across multiple apps in real time — keeping CRM, spreadsheets, and communication tools in perfect sync.</p>
-            <div class="tag-row">
-              <span class="tag">Make</span>
-              <span class="tag">Integration</span>
-              <span class="tag">Sync</span>
+              <span class="tag">Facebook</span>
             </div>
           </div>
         </article>
@@ -451,34 +371,32 @@
         <div class="contact-links-col">
           <h3>Other Ways to Reach Me</h3>
           <div class="contact-links">
-            <!-- REPLACE href values with your actual links -->
-            <a href="#" class="contact-link">
+            <a href="https://www.upwork.com/freelancers/pacondor?mp_source=share" target="_blank" class="contact-link">
               <span class="clink-icon">&#127908;</span>
               <div>
                 <strong>Hire me on Upwork</strong>
                 <span>View my profile</span>
               </div>
             </a>
-            <a href="#" class="contact-link">
+            <a href="https://www.linkedin.com/in/pacondo-rote-49840b306" target="_blank" class="contact-link">
               <span class="clink-icon">&#128188;</span>
               <div>
                 <strong>LinkedIn</strong>
                 <span>View my profile</span>
               </div>
             </a>
-            <!-- REPLACE with your actual phone number -->
-            <a href="tel:+639XXXXXXXX" class="contact-link">
+            <a href="tel:+639107742327" class="contact-link">
               <span class="clink-icon">&#128222;</span>
               <div>
-                <strong>+639XXXXXXXX</strong>
+                <strong>+639107742327</strong>
                 <span>Call me</span>
               </div>
             </a>
-            <a href="#" class="contact-link">
+            <a href="https://www.facebook.com/donpacondo4/" target="_blank" class="contact-link">
               <span class="clink-icon">&#128172;</span>
               <div>
-                <strong>Connect with me</strong>
-                <span>Social media</span>
+                <strong>Facebook</strong>
+                <span>Visit my page</span>
               </div>
             </a>
             <a href="mailto:pacondorote43@gmail.com" class="contact-link">
@@ -498,8 +416,7 @@
   <!-- ═══════════════════ LIGHTBOX ═══════════════════ -->
   <!-- ═══════════════════ RESUME MODAL ═══════════════════ -->
   <!-- ═══════════════════ CUSTOM CURSOR ═══════════════════ -->
-  <div class="cursor-dot" id="cursorDot"></div>
-  <div class="cursor-ring" id="cursorRing"></div>
+  <div id="cursorMirage"></div>
 
   <div class="resume-modal" id="resumeModal">
     <button class="lightbox-close" id="resumeClose">&times;</button>

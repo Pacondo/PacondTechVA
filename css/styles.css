@@ -26,43 +26,27 @@
 ═══════════════════════════════════════════════════ */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
+
+html { scroll-behavior: smooth; }
+
 /* ═══════════════════════════════════════════════════
    CUSTOM CURSOR
 ═══════════════════════════════════════════════════ */
 @media (pointer: fine) {
-  * { cursor: none !important; }
-
-  .cursor-dot {
-    position: fixed;
-    width: 8px;
-    height: 8px;
-    background: var(--accent);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 999999;
-    transform: translate(-50%, -50%);
-    box-shadow: 0 0 8px var(--accent), 0 0 18px var(--accent);
-    transition: transform 0.08s, width 0.2s, height 0.2s, background 0.2s;
-  }
-
-  .cursor-ring {
-    position: fixed;
-    width: 36px;
-    height: 36px;
-    border: 1.5px solid var(--accent);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 999998;
-    transform: translate(-50%, -50%);
-    transition: left 0.1s ease, top 0.1s ease, width 0.2s, height 0.2s, border-color 0.2s, opacity 0.2s;
-    opacity: 0.55;
-  }
-
-  .cursor-dot.hover { width: 12px; height: 12px; background: var(--accent-h); }
-  .cursor-ring.hover { width: 52px; height: 52px; border-color: var(--accent-h); opacity: 0.9; }
+  * { cursor: url('../images/cursor5-glow.png') 18 14, auto !important; }
+  a, button { cursor: url('../images/cursor5-glow.png') 18 14, pointer !important; }
 }
 
-html { scroll-behavior: smooth; }
+.cursor-trail {
+  position: fixed;
+  width: 32px;
+  height: 48px;
+  background: url('images/cursor5-glow.png') center/contain no-repeat;
+  pointer-events: none;
+  z-index: 999990;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.1s;
+}
 
 body {
   font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -334,7 +318,20 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   font-weight: 500;
   color: var(--txt-2);
   margin-bottom: 18px;
+  display: inline-block;
+  perspective: 600px;
+  transform-style: preserve-3d;
 }
+@keyframes flip-out {
+  0%   { transform: rotateX(0deg); opacity: 1; }
+  100% { transform: rotateX(-90deg); opacity: 0; }
+}
+@keyframes flip-in {
+  0%   { transform: rotateX(90deg); opacity: 0; }
+  100% { transform: rotateX(0deg); opacity: 1; }
+}
+.hero-subtitle.flipping-out { animation: flip-out 0.35s ease forwards; }
+.hero-subtitle.flipping-in  { animation: flip-in  0.35s ease forwards; }
 .hero-desc {
   font-size: 15px;
   color: var(--txt-2);

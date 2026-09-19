@@ -227,6 +227,15 @@
         <button class="sub-tab-btn" data-subfilter="workflows">Workflows</button>
       </div>
 
+      <!-- CRM Sub-tabs -->
+      <div class="sub-tab-bar" id="crmSubTabs">
+        <button class="sub-tab-btn active" data-subfilter="all">All</button>
+        <button class="sub-tab-btn" data-subfilter="monday">Monday</button>
+        <button class="sub-tab-btn" data-subfilter="hubspot">HubSpot</button>
+        <button class="sub-tab-btn" data-subfilter="salesforce">Salesforce</button>
+        <button class="sub-tab-btn" data-subfilter="pipedrive">Pipedrive</button>
+      </div>
+
       <div class="portfolio-grid" id="portfolioGrid">
 
         <!-- MAKE — Automated Zero Export → Asana CSV Upload -->
@@ -311,6 +320,23 @@
           </div>
         </article>
 
+        <!-- N8N — Workflow: AR Chaser Demo -->
+        <article class="card port-card animate-up" data-category="n8n" data-subcategory="workflows">
+          <div class="port-thumb cert-clickable" data-src="images/n8n/AR Chaser Demo (n8n + Xero).png" style="background: linear-gradient(135deg,#1a1a2e,#16213e)">
+            <img src="images/n8n/AR Chaser Demo (n8n + Xero).png" alt="AR Chaser Demo" />
+          </div>
+          <div class="port-body">
+            <h3>AR Chaser Demo (n8n + Xero)</h3>
+            <p>Automated accounts receivable chaser that polls overdue invoices from Xero, computes days overdue, fetches client history, and uses AI to draft personalized follow-up emails — then sends via Gmail and logs everything to Google Sheets.</p>
+            <div class="tag-row">
+              <span class="tag">N8N</span>
+              <span class="tag">Xero</span>
+              <span class="tag">AI</span>
+              <span class="tag">Gmail</span>
+            </div>
+          </div>
+        </article>
+
         <!-- N8N — AI Agent -->
         <article class="card port-card animate-up" data-category="n8n" data-subcategory="ai-agent">
           <div class="port-thumb cert-clickable" data-src="images/n8n/FB Page Farm Agent.png" style="background: linear-gradient(135deg,#ea4b71,#bf3054)">
@@ -326,6 +352,7 @@
             </div>
           </div>
         </article>
+
 
       </div>
     </div>
@@ -399,25 +426,6 @@
     </div>
   </section>
 
-  <!-- ═══════════════════ STATS ═══════════════════ -->
-  <section class="stats-section">
-    <div class="container">
-      <div class="stats-grid">
-        <div class="stat animate-up">
-          <div class="stat-number">4.9 <span class="stat-star">&#11088;</span></div>
-          <div class="stat-label">Client Rating</div>
-        </div>
-        <div class="stat animate-up">
-          <div class="stat-number">100%</div>
-          <div class="stat-label">Success Rate</div>
-        </div>
-        <div class="stat animate-up">
-          <div class="stat-number">24/7</div>
-          <div class="stat-label">Support Availability</div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- ═══════════════════ CONTACT ═══════════════════ -->
   <section class="contact section" id="contact">

@@ -193,8 +193,8 @@ let activeSubFilter = 'all';
 
 function showCards(category, subfilter) {
   portCards.forEach(card => {
-    const matchCat = card.dataset.category === category;
-    const matchSub = subfilter === 'all' || !card.dataset.subcategory || card.dataset.subcategory === subfilter;
+    const matchCat = category === 'all' || card.dataset.category === category;
+    const matchSub = category === 'all' || subfilter === 'all' || !card.dataset.subcategory || card.dataset.subcategory === subfilter;
     const show = matchCat && matchSub;
     card.style.display = show ? '' : 'none';
     if (show) {

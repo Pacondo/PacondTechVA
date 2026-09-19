@@ -184,8 +184,9 @@ const tabBtns    = document.querySelectorAll('.tab-btn');
 const portCards  = document.querySelectorAll('.port-card');
 const ghlSubTabs = document.getElementById('ghlSubTabs');
 const n8nSubTabs = document.getElementById('n8nSubTabs');
+const crmSubTabs = document.getElementById('crmSubTabs');
 
-const subTabBars = { ghl: ghlSubTabs, n8n: n8nSubTabs };
+const subTabBars = { ghl: ghlSubTabs, n8n: n8nSubTabs, crm: crmSubTabs };
 
 let activeCategory  = 'zapier';
 let activeSubFilter = 'all';

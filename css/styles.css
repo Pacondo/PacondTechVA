@@ -674,9 +674,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   gap: 4px;
   padding: 6px;
   background: var(--bg-alt);
+  overflow-x: auto;
 }
 .port-gallery-thumb {
   flex: 1;
+  min-width: 62px;
   cursor: pointer;
   border-radius: 6px;
   overflow: hidden;

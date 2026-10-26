@@ -182,19 +182,18 @@ document.querySelectorAll('.animate-up').forEach(el => {
 ═══════════════════════════════════ */
 const tabBtns    = document.querySelectorAll('.tab-btn');
 const portCards  = document.querySelectorAll('.port-card');
-const ghlSubTabs = document.getElementById('ghlSubTabs');
-const n8nSubTabs = document.getElementById('n8nSubTabs');
 const crmSubTabs = document.getElementById('crmSubTabs');
 
-const subTabBars = { ghl: ghlSubTabs, n8n: n8nSubTabs, crm: crmSubTabs };
+const subTabBars = { crm: crmSubTabs };
 
 let activeCategory  = 'zapier';
 let activeSubFilter = 'all';
 
 function showCards(category, subfilter) {
   portCards.forEach(card => {
-    const matchCat = category === 'all' || card.dataset.category === category;
-    const matchSub = category === 'all' || subfilter === 'all' || !card.dataset.subcategory || card.dataset.subcategory === subfilter;
+    const matchCat = card.dataset.category === category;
+    /* subfilter stays 'all' for categories with no sub-tab row (Zapier, Make) */
+    const matchSub = subfilter === 'all' || !card.dataset.subcategory || card.dataset.subcategory === subfilter;
     const show = matchCat && matchSub;
     card.style.display = show ? '' : 'none';
     if (show) {
@@ -216,7 +215,9 @@ tabBtns.forEach(btn => {
     const bar = subTabBars[activeCategory];
     if (bar) {
       bar.classList.add('visible');
-      bar.querySelectorAll('.sub-tab-btn').forEach(b => b.classList.toggle('active', b.dataset.subfilter === 'all'));
+      const subBtns = bar.querySelectorAll('.sub-tab-btn');
+      subBtns.forEach((b, i) => b.classList.toggle('active', i === 0));
+      if (subBtns[0]) activeSubFilter = subBtns[0].dataset.subfilter;
     }
 
     showCards(activeCategory, activeSubFilter);
@@ -315,3 +316,34 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowLeft'  && lbIdx > 0) { lbIdx--; lightboxImg.src = lbImages[lbIdx]; syncArrows(); }
   if (e.key === 'ArrowRight' && lbIdx < lbImages.length - 1) { lbIdx++; lightboxImg.src = lbImages[lbIdx]; syncArrows(); }
 });
+
+/* ═══════════════════════════════════
+   3D CARD TILT
+═══════════════════════════════════ */
+const canTilt = window.matchMedia('(hover: hover) and (pointer: fine)').matches &&
+                !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+if (canTilt) {
+  const MAX_TILT = 9;
+  document.querySelectorAll('.port-card, .service-card, .cert-card').forEach(card => {
+    card.classList.add('tilt-card');
+
+    card.addEventListener('mouseenter', () => card.classList.add('is-tilting'));
+
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width;
+      const py = (e.clientY - r.top) / r.height;
+      card.style.setProperty('--glare-x', `${px * 100}%`);
+      card.style.setProperty('--glare-y', `${py * 100}%`);
+      card.style.transform =
+        `perspective(900px) rotateX(${(0.5 - py) * MAX_TILT}deg) ` +
+        `rotateY(${(px - 0.5) * MAX_TILT}deg) translateY(-5px)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.classList.remove('is-tilting');
+      card.style.transform = '';
+    });
+  });
+}

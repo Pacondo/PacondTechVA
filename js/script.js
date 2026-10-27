@@ -186,7 +186,7 @@ const crmSubTabs = document.getElementById('crmSubTabs');
 
 const subTabBars = { crm: crmSubTabs };
 
-let activeCategory  = 'zapier';
+let activeCategory  = 'ghl';
 let activeSubFilter = 'all';
 
 function showCards(category, subfilter) {

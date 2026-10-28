@@ -67,17 +67,6 @@
         ];
       }
     },
-    starlight: {
-      intro: 'Try the enrollment journey inspired by the Starlight Academy landing page.',
-      fields: [['name', 'Student name', 'Sam'], ['intent', 'Class interest', ['Ballet', 'Hip-hop', 'Contemporary']]],
-      steps: ['Explore the offer', 'Choose a class', 'Preview enrollment', 'Confirmation shown'],
-      run: ({ name, intent }) => [
-        ['Starlight Academy', 'Find your rhythm. Explore dance classes and take the first step toward the studio.'],
-        ['Class selected', `${name} is interested in ${intent}.`],
-        ['Sample enrollment record', `Student: ${name}\nClass: ${intent}\nStage: Enrollment inquiry`],
-        ['Confirmation preview', `Thanks, ${name}! Your sample ${intent} inquiry is ready. In a live enrollment flow, the team would contact you with next steps.`]
-      ]
-    },
     nurture: {
       intro: 'Choose a reply outcome and see which branch the lead nurture workflow takes.',
       fields: [['name', 'Lead name', 'Casey'], ['intent', 'Contact response', ['Interested', 'No reply']]],

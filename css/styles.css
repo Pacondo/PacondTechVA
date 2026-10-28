@@ -371,7 +371,12 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   color: var(--txt-2);
   transition: color var(--ease);
 }
-.hero-youtube svg { width: 20px; height: 20px; color: #ff0000; }
+.hero-youtube svg {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  color: #ff0000;
+}
 .hero-youtube:hover { color: var(--txt); }
 
 .btn-primary, .btn-outline {

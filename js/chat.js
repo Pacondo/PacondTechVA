@@ -3,7 +3,7 @@
 ═══════════════════════════════════ */
 
 /* Paste your n8n Production webhook URL here. */
-const CHAT_WEBHOOK_URL = '';
+const CHAT_WEBHOOK_URL = 'https://n8n-aqlw.srv1641523.hstgr.cloud/webhook/pacondotechva-chat';
 
 /* Turns sent back for context. Caps cost and keeps the request small. */
 const MAX_HISTORY = 10;
@@ -53,7 +53,7 @@ function submit() {
 }
 
 async function send(text) {
-  appendMsg(text, 'user');
+  appendMsg(escapeHtml(text), 'user');
   history.push({ role: 'user', content: text });
 
   if (!CHAT_WEBHOOK_URL) {

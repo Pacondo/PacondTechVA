@@ -1,41 +1,82 @@
 /* ═══════════════════════════════════
-   CURSOR MIRAGE TRAIL
+   FACETED POINTER
 ═══════════════════════════════════ */
 (function () {
-  const TRAIL_COUNT = 8;
-  const container   = document.getElementById('cursorMirage');
-  const dots        = [];
+  const cursor = document.getElementById('customCursor');
+  if (!cursor) return;
 
-  for (let i = 0; i < TRAIL_COUNT; i++) {
-    const el = document.createElement('div');
-    el.className = 'cursor-trail';
-    el.style.opacity = (1 - i / TRAIL_COUNT) * 0.55;
-    el.style.transform = `translate(-50%,-50%) scale(${1 - i * 0.07})`;
-    container.appendChild(el);
-    dots.push({ el, x: -200, y: -200 });
+  const pointer = cursor.querySelector('.cursor-pointer');
+  if (!pointer) return;
+  const root = document.documentElement;
+  const enabled = window.matchMedia('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) and (forced-colors: none)');
+  const nativeTargets = 'input, textarea, select, iframe, video, object, embed, [contenteditable]:not([contenteditable="false"]), [disabled], [aria-disabled="true"]';
+  const interactiveTargets = 'a[href], button, summary, [role="button"], [role="link"], .port-gallery-main, .port-gallery-thumb, .cert-clickable, .lightbox';
+  let mouseX = 0, mouseY = 0;
+  let scrollFrame = 0, visible = false;
+
+  function hide() {
+    visible = false;
+    root.classList.remove('custom-cursor-active');
+    cursor.classList.remove('is-hovering', 'is-pressed');
+    cursor.dataset.action = '';
+    cancelAnimationFrame(scrollFrame);
+    scrollFrame = 0;
   }
 
-  let mouseX = -200, mouseY = -200;
+  function updateTarget(target) {
+    if (!(target instanceof Element) || target.closest(nativeTargets)) {
+      hide();
+      return;
+    }
+    cursor.classList.toggle('is-hovering', Boolean(target.closest(interactiveTargets)));
+    cursor.dataset.action = target.closest('.cert-clickable') ? 'preview' :
+      target.closest('.lightbox-close') || target.matches('.lightbox') ? 'close' : '';
+    visible = true;
+    root.classList.add('custom-cursor-active');
+  }
 
-  document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
+  function move(event) {
+    if (!enabled.matches || event.pointerType !== 'mouse') {
+      hide();
+      return;
+    }
+
+    mouseX = event.clientX;
+    mouseY = event.clientY;
+    // The SVG tip is at (2, 2); place it directly at the mouse hotspot.
+    pointer.style.transform = `translate3d(${mouseX - 2}px, ${mouseY - 2}px, 0)`;
+    updateTarget(event.target);
+  }
+
+  document.addEventListener('pointermove', move, { passive: true });
+  document.addEventListener('pointerover', move, { passive: true });
+  document.addEventListener('pointerdown', event => {
+    move(event);
+    if (visible && event.button === 0) cursor.classList.add('is-pressed');
+  }, { passive: true });
+  document.addEventListener('pointerup', () => cursor.classList.remove('is-pressed'), { passive: true });
+  document.addEventListener('pointerout', event => {
+    if (!event.relatedTarget) hide();
+  }, { passive: true });
+  document.addEventListener('pointercancel', hide, { passive: true });
+  document.addEventListener('dragstart', hide);
+  document.addEventListener('contextmenu', hide);
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Tab') hide();
   });
-
-  function animate() {
-    let x = mouseX, y = mouseY;
-    dots.forEach((dot, i) => {
-      dot.el.style.left = x + 'px';
-      dot.el.style.top  = y + 'px';
-      const prev = dots[i] || { x, y };
-      x = prev.x + (x - prev.x) * 0.5;
-      y = prev.y + (y - prev.y) * 0.5;
-      dot.x = x;
-      dot.y = y;
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) hide();
+  });
+  window.addEventListener('blur', hide);
+  // Refresh hover feedback when content scrolls beneath a stationary pointer.
+  window.addEventListener('scroll', () => {
+    if (!visible || scrollFrame) return;
+    scrollFrame = requestAnimationFrame(() => {
+      scrollFrame = 0;
+      updateTarget(document.elementFromPoint(mouseX, mouseY));
     });
-    requestAnimationFrame(animate);
-  }
-  animate();
+  }, { passive: true, capture: true });
+  enabled.addEventListener('change', hide);
 })();
 
 /* ═══════════════════════════════════

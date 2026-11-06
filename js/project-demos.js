@@ -3,86 +3,82 @@
   const demos = {
     'real-estate': {
       intro: 'Follow a sample property inquiry from qualification to the GoHighLevel pipeline.',
-      fields: [['name', 'Lead name', 'Alex Rivera'], ['intent', 'Buying timeline', ['Ready this month', 'Researching for next year']]],
+      fields: [['name', 'Lead name', 'Alex Rivera'], ['intent', 'Buying timeline', ['Ready this month']]],
       steps: ['Inquiry received', 'n8n qualifies lead', 'GoHighLevel contact updated', 'Assigned to broker', 'Pipeline updated', 'Nurture selected', 'Booking follow-up'],
       run: ({ name, intent }) => [
         ['Incoming inquiry', `${name} is interested in a property. Timeline: ${intent.toLowerCase()}.`],
-        ['Sample qualification', intent === 'Ready this month' ? 'Priority: high. Ready for agent follow-up.' : 'Priority: nurture. Keep in touch until ready.'],
+        ['Sample qualification', 'Priority: high. Ready for agent follow-up.'],
         ['Contact preview', `${name}: sample GoHighLevel contact updated with the inquiry and qualification.`],
         ['Broker assignment', `${name} is assigned to the sample broker for ownership and follow-up.`],
-        ['Pipeline preview', `${name} → ${intent === 'Ready this month' ? 'New qualified lead' : 'Long-term nurture'}. Owner: sample broker.`],
-        ['Next action', intent === 'Ready this month' ? `Hi ${name}, let’s find your next home. Choose a time for a discovery call.` : `Hi ${name}, here is a sample market update to help you plan your next move.`],
-        ['Calendar follow-up', intent === 'Ready this month' ? 'Sample booking invitation prepared. When a call is booked, the booked-call workflow updates the pipeline.' : 'Long-term nurture selected. A booking invitation can follow when the lead is ready.']
+        ['Pipeline preview', `${name} → New qualified lead. Owner: sample broker.`],
+        ['Next action', `Hi ${name}, let’s find your next home. Choose a time for a discovery call.`],
+        ['Calendar follow-up', 'Sample booking invitation prepared. When a call is booked, the booked-call workflow updates the pipeline.']
       ]
     },
     'lead-intake': {
-      intro: 'Try two inquiry types and see how a sample qualification changes the CRM handoff.',
-      fields: [['name', 'Lead name', 'Jamie Cruz'], ['intent', 'Inquiry', ['Ready to buy a home', 'Just browsing properties']]],
+      intro: 'Follow a sample property inquiry through qualification and the CRM handoff.',
+      fields: [['name', 'Lead name', 'Jamie Cruz'], ['intent', 'Inquiry', ['Ready to buy a home']]],
       steps: ['Inquiry captured', 'Details extracted', 'Lead qualified', 'CRM handoff prepared'],
       run: ({ name, intent }) => [
         ['Source message', `${name}: “${intent}.”`],
         ['Extracted fields', `Name: ${name}\nInterest: property purchase\nIntent: ${intent}`],
-        ['Sample classification', intent === 'Ready to buy a home' ? 'High intent → agent follow-up.' : 'Early research → nurture.'],
-        ['GoHighLevel payload preview', JSON.stringify({ name, interest: 'property', qualification: intent === 'Ready to buy a home' ? 'high' : 'nurture', source: 'n8n demo' }, null, 2)]
+        ['Sample classification', 'High intent → agent follow-up.'],
+        ['GoHighLevel payload preview', JSON.stringify({ name, interest: 'property', qualification: 'high', source: 'n8n demo' }, null, 2)]
       ]
     },
     instagram: {
-      intro: 'Turn a sample Instagram comment into a booking flow. Try both appointment outcomes.',
-      fields: [['name', 'Instagram name', 'Taylor'], ['intent', 'Appointment outcome', ['Consult booked', 'No booking yet']]],
+      intro: 'Follow a sample Instagram comment through to a booked consultation.',
+      fields: [['name', 'Instagram name', 'Taylor'], ['intent', 'Appointment outcome', ['Consult booked']]],
       steps: ['Comment received', 'ManyChat reply prepared', 'Booking invitation shared', 'Booking status checked', 'GoHighLevel updated'],
-      run: ({ name, intent }) => [
+      run: ({ name }) => [
         ['Instagram trigger', `@${name} commented “INFO” on the sample post.`],
         ['Sample direct message', `Hey ${name}! Thanks for your interest. Want to book a quick consult?`],
         ['Calendar invitation', 'A sample consultation link is shared with the contact.'],
-        ['Appointment check', intent === 'Consult booked' ? 'Sample consultation booking detected.' : 'No sample appointment found yet. Continue the booking reminder branch.'],
-        ['Workflow outcome', intent === 'Consult booked' ? `${name} → Consult booked. Confirmation prepared; booking nudges stopped.` : `${name} → Awaiting booking. A reminder is queued in this sample flow.`]
+        ['Appointment check', 'Sample consultation booking detected.'],
+        ['Workflow outcome', `${name} → Consult booked. Confirmation prepared; booking nudges stopped.`]
       ]
     },
     invoices: {
-      intro: 'Preview an invoice reminder and see how a paid invoice stops the follow-up.',
-      fields: [['name', 'Client name', 'Morgan'], ['intent', 'Invoice status', ['14 days overdue', '30 days overdue', 'Already paid']]],
+      intro: 'Follow an overdue invoice from the balance check to a prepared reminder.',
+      fields: [['name', 'Client name', 'Morgan'], ['intent', 'Invoice status', ['14 days overdue']]],
       steps: ['Xero invoice checked', 'Payment status reviewed', 'Reminder drafted', 'Activity logged'],
-      run: ({ name, intent }) => {
-        const paid = intent === 'Already paid';
-        return [
-          ['Sample invoice', `INV-DEMO-104 · Client: ${name} · Amount: $450.00`],
-          ['Balance check', paid ? 'Balance: $0.00. Invoice marked paid.' : `Balance: $450.00. Status: ${intent}.`],
-          ['Sample email preview', paid ? 'No reminder needed. Follow-up skipped.' : `Hi ${name}, ${intent === '30 days overdue' ? 'following up again on' : 'a friendly reminder about'} invoice INV-DEMO-104 for $450.00. Please let us know if you need a copy or have any questions.`],
-          ['Sample activity log', paid ? 'Paid → reminder skipped → outcome logged.' : 'Overdue → reminder prepared → sample Gmail send step → outcome logged. No email was sent.']
-        ];
-      }
+      run: ({ name, intent }) => [
+        ['Sample invoice', `INV-DEMO-104 · Client: ${name} · Amount: $450.00`],
+        ['Balance check', `Balance: $450.00. Status: ${intent}.`],
+        ['Sample email preview', `Hi ${name}, a friendly reminder about invoice INV-DEMO-104 for $450.00. Please let us know if you need a copy or have any questions.`],
+        ['Sample activity log', 'Overdue → reminder prepared → sample Gmail send step → outcome logged. No email was sent.']
+      ]
     },
     export: {
       intro: 'Convert sample Xero records into an Asana-ready CSV preview.',
-      fields: [['name', 'Asana project name', 'Finance follow-up'], ['intent', 'Export filter', ['Overdue invoices', 'All invoices']]],
+      fields: [['name', 'Asana project name', 'Finance follow-up'], ['intent', 'Export filter', ['Overdue invoices']]],
       steps: ['Export triggered', 'Records selected', 'CSV formatted', 'Asana import preview'],
       run: ({ name, intent }) => {
-        const rows = [['INV-104', 'Morgan', '450.00', 'Overdue'], ['INV-105', 'Jamie', '280.00', 'Paid']];
-        const selected = intent === 'Overdue invoices' ? rows.slice(0, 1) : rows;
+        const rows = [['INV-104', 'Morgan', '450.00', 'Overdue']];
         return [
           ['Scheduled export', 'Sample Xero invoice export started.'],
-          ['Selected records', `${selected.length} invoice record(s) selected with filter: ${intent}.`],
-          ['CSV preview', 'Invoice,Client,Amount,Status\n' + selected.map(row => row.join(',')).join('\n')],
-          ['Asana preview', `${name}: ${selected.length} sample task(s) ready for import. No project was changed.`]
+          ['Selected records', `${rows.length} invoice record(s) selected with filter: ${intent}.`],
+          ['CSV preview', 'Invoice,Client,Amount,Status\n' + rows.map(row => row.join(',')).join('\n')],
+          ['Asana preview', `${name}: ${rows.length} sample task(s) ready for import. No project was changed.`]
         ];
       }
     },
     nurture: {
-      intro: 'Choose a reply outcome and see which branch the lead nurture workflow takes.',
-      fields: [['name', 'Lead name', 'Casey'], ['intent', 'Contact response', ['Interested', 'No reply']]],
+      intro: 'Follow an interested lead through the nurture workflow and follow-up.',
+      fields: [['name', 'Lead name', 'Casey'], ['intent', 'Contact response', ['Interested']]],
       steps: ['Form submitted', 'Lead tagged', 'SMS prepared', 'Call follow-up', 'Reply or timeout checked', 'Follow-up branch selected'],
-      run: ({ name, intent }) => [
+      run: ({ name }) => [
         ['Form trigger', `${name} submitted the sample inquiry form.`],
         ['Contact updated', 'Tag: new-lead. Sample contact added to the nurture workflow.'],
         ['Sample SMS', `Hi ${name}, thanks for reaching out! Would you like us to send more details?`],
         ['Call follow-up preview', `A sample follow-up call is queued for ${name}. No call is placed.`],
-        ['Response check', intent === 'Interested' ? 'Interested reply detected in the sample conversation.' : 'Sample waiting period ended without a reply.'],
-        ['Branch outcome', intent === 'Interested' ? 'Reply detected → send documents → continue interested-lead follow-up.' : 'Reply timeout → move to the re-engagement workflow.']
+        ['Response check', 'Interested reply detected in the sample conversation.'],
+        ['Branch outcome', 'Reply detected → send documents → continue interested-lead follow-up.']
       ]
     },
     webinar: {
       intro: 'Walk through the three-page registration funnel using a sample attendee.',
-      fields: [['name', 'Attendee name', 'Jordan'], ['intent', 'Agency role', ['Agency owner', 'Marketing specialist', 'Operations manager']]],
+      fields: [['name', 'Attendee name', 'Jordan'], ['intent', 'Agency role', ['Agency owner']]],
       steps: ['Landing page', 'Registration form', 'Registration preview', 'Thank-you page'],
       run: ({ name, intent }) => [
         ['Webinar offer', 'Explore how an agency can streamline its lead follow-up. Next step: reserve a sample seat.'],
@@ -92,36 +88,26 @@
       ]
     },
     enrichment: {
-      intro: 'See how complete and incomplete sample leads take different enrichment paths.',
-      fields: [['name', 'Lead name', 'Avery'], ['intent', 'Incoming details', ['Company domain provided', 'Company domain missing']]],
+      intro: 'Follow a sample lead from company-domain validation to an enriched CRM record.',
+      fields: [['name', 'Lead name', 'Avery'], ['intent', 'Incoming details', ['Company domain provided']]],
       steps: ['New lead captured', 'Details checked', 'Enrichment preview', 'CRM handoff'],
-      run: ({ name, intent }) => {
-        const complete = intent === 'Company domain provided';
-        return [
-          ['Incoming lead', `Name: ${name}\nCompany domain: ${complete ? 'example.com' : 'Not provided'}`],
-          ['Validation', complete ? 'Company domain present. Continue sample enrichment.' : 'Company domain missing. Flag for review.'],
-          ['Sample enrichment', complete ? 'Company: Example Studio\nIndustry: Creative services\nContact role: Operations (illustrative data)' : 'Company and role remain unknown. No details invented for this sample lead.'],
-          ['CRM preview', `${name} → ${complete ? 'Enriched lead, ready for follow-up' : 'Needs review, request company details'}.`]
-        ];
-      }
+      run: ({ name }) => [
+        ['Incoming lead', `Name: ${name}\nCompany domain: example.com`],
+        ['Validation', 'Company domain present. Continue sample enrichment.'],
+        ['Sample enrichment', 'Company: Example Studio\nIndustry: Creative services\nContact role: Operations (illustrative data)'],
+        ['CRM preview', `${name} → Enriched lead, ready for follow-up.`]
+      ]
     },
     farm: {
-      intro: 'Try common farm-page inquiries and preview a sample assistant response.',
-      fields: [['name', 'Customer name', 'Riley'], ['intent', 'Message topic', ['Product availability', 'Delivery options', 'Speak to a person']]],
+      intro: 'Preview a sample assistant response to a product-availability inquiry.',
+      fields: [['name', 'Customer name', 'Riley'], ['intent', 'Message topic', ['Product availability']]],
       steps: ['Message received', 'Intent identified', 'Reply prepared', 'Conversation updated'],
-      run: ({ name, intent }) => {
-        const replies = {
-          'Product availability': `Hi ${name}! Which product and quantity are you looking for? The farm team can confirm current stock.`,
-          'Delivery options': `Hi ${name}! Please share your delivery area so the farm team can confirm available options and fees.`,
-          'Speak to a person': `Hi ${name}! I’ll flag your inquiry for the farm team to follow up.`
-        };
-        return [
-          ['Facebook message', `${name} asked about: ${intent.toLowerCase()}.`],
-          ['Sample intent', intent === 'Speak to a person' ? 'Human handoff requested.' : `Topic identified: ${intent}.`],
-          ['Scripted reply preview', replies[intent]],
-          ['Conversation state', intent === 'Speak to a person' ? 'Needs team follow-up. Sample handoff flag added.' : 'Awaiting customer details. Sample conversation context retained for this session.']
-        ];
-      }
+      run: ({ name, intent }) => [
+        ['Facebook message', `${name} asked about: ${intent.toLowerCase()}.`],
+        ['Sample intent', `Topic identified: ${intent}.`],
+        ['Scripted reply preview', `Hi ${name}! Which product and quantity are you looking for? The farm team can confirm current stock.`],
+        ['Conversation state', 'Awaiting customer details. Sample conversation context retained for this session.']
+      ]
     }
   };
 
@@ -137,7 +123,7 @@
     <div class="automation-playground">
       <div class="workflow-console">
         <div class="console-top"><span><span class="playground-status-dot" aria-hidden="true"></span> AUTOMATION PLAYGROUND</span><span class="demo-label">INTERACTIVE DEMO</span></div>
-        <div class="workflow-options" role="group" aria-label="Choose a sample scenario"></div>
+        <div class="workflow-options" role="group" aria-label="Sample scenario"></div>
         <ol class="workflow-steps"></ol>
         <div class="project-demo-meter" role="progressbar" aria-label="Workflow progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div>
         <div class="project-demo-result" hidden></div>
@@ -145,6 +131,9 @@
       </div>
     </div>`;
   document.body.append(dialog);
+
+  const customCursor = document.getElementById('customCursor');
+  const cursorHome = customCursor?.parentElement;
 
   const title = dialog.querySelector('h2');
   const intro = dialog.querySelector('.project-demo-intro');
@@ -243,7 +232,7 @@
     text.textContent = outputs[step][1];
     const progress = document.createElement('span');
     progress.className = 'project-demo-progress';
-    progress.textContent = step === outputs.length - 1 ? 'Sample complete — change the details to try another outcome.' : `Step ${step + 1} of ${outputs.length}`;
+    progress.textContent = step === outputs.length - 1 ? 'Sample complete.' : `Step ${step + 1} of ${outputs.length}`;
     result.replaceChildren(heading, text, progress);
     result.hidden = false;
     status.textContent = `Step ${step + 1} of ${outputs.length} · ${current.steps[step]}`;
@@ -266,7 +255,7 @@
     const text = document.createElement('p');
     text.textContent = outputs[outputs.length - 1][1];
     result.replaceChildren(heading, text);
-    status.textContent = 'Demo complete. Replay or choose another scenario.';
+    status.textContent = 'Demo complete. Replay to watch the workflow again.';
     run.textContent = '↻ Replay demo';
   }
   run.addEventListener('click', () => {
@@ -294,7 +283,7 @@
       current = config;
       trigger = button;
       title.textContent = card.querySelector('h3').textContent;
-      intro.textContent = 'Choose a scenario and watch the workflow run.';
+      intro.textContent = config.intro;
       selected = config.fields[1][2][0];
       options.replaceChildren(...config.fields[1][2].map((value, index) => {
         const option = document.createElement('button');
@@ -324,6 +313,9 @@
       previousOverflow = document.body.style.overflow;
       document.body.style.overflow = 'hidden';
       dialog.showModal();
+      // A modal dialog's top layer sits above every page z-index.
+      // Keep the fixed cursor inside that layer while the demo is open.
+      if (customCursor) dialog.append(customCursor);
       drawConnectors();
       dialog.querySelector('.project-demo-close').focus();
     });
@@ -334,6 +326,7 @@
     if (event.target === dialog && (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom)) dialog.close();
   });
   dialog.addEventListener('close', () => {
+    if (customCursor && cursorHome) cursorHome.append(customCursor);
     document.body.style.overflow = previousOverflow;
     reset();
     trigger?.focus();

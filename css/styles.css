@@ -32,20 +32,74 @@ html { scroll-behavior: smooth; }
 /* ═══════════════════════════════════════════════════
    CUSTOM CURSOR
 ═══════════════════════════════════════════════════ */
-@media (pointer: fine) {
-  * { cursor: url('../images/cursor5-glow.png') 18 14, auto !important; }
-  a, button { cursor: url('../images/cursor5-glow.png') 18 14, pointer !important; }
-}
-
-.cursor-trail {
+.custom-cursor {
+  display: none;
   position: fixed;
-  width: 32px;
-  height: 48px;
-  background: url('images/cursor5-glow.png') center/contain no-repeat;
+  inset: 0;
   pointer-events: none;
-  z-index: 999990;
-  transform: translate(-50%, -50%);
-  transition: opacity 0.1s;
+  z-index: 20000;
+  opacity: 0;
+}
+.custom-cursor * { pointer-events: none; }
+.cursor-pointer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 28px;
+  height: 34px;
+  will-change: transform;
+}
+.cursor-arrow {
+  display: block;
+  width: 28px;
+  height: 34px;
+  overflow: visible;
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,0.35));
+  /* Every state pivots at the tip so the click position stays exact. */
+  transform-origin: 2px 2px;
+  transition: transform 160ms cubic-bezier(0.2,0.8,0.2,1);
+}
+.cursor-arrow-active { opacity: 0; transition: opacity 160ms ease; }
+.cursor-facet { fill: #4f8bff; opacity: 0.65; transition: fill 160ms ease; }
+.custom-cursor.is-hovering .cursor-arrow { transform: rotate(-5deg) scale(1.08); }
+.custom-cursor.is-hovering .cursor-arrow-active { opacity: 1; }
+.custom-cursor.is-hovering .cursor-facet { fill: #3456bd; }
+.custom-cursor.is-pressed .cursor-arrow { transform: scale(0.88); }
+.cursor-action {
+  position: absolute;
+  top: 19px;
+  left: 25px;
+  width: 15px;
+  height: 15px;
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 4px;
+  background: #253858;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  opacity: 0;
+  transform: translateY(3px) scale(0.8);
+  transition: opacity 140ms ease, transform 140ms ease;
+}
+.cursor-action::before, .cursor-action::after {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 3px;
+  width: 7px;
+  height: 1px;
+  border-radius: 1px;
+  background: #f2f7ff;
+}
+.cursor-action::after { transform: rotate(90deg); }
+.custom-cursor[data-action="preview"] .cursor-action,
+.custom-cursor[data-action="close"] .cursor-action { opacity: 1; transform: none; }
+.custom-cursor[data-action="close"] .cursor-action::before { transform: rotate(45deg); }
+.custom-cursor[data-action="close"] .cursor-action::after { transform: rotate(-45deg); }
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) and (forced-colors: none) {
+  .custom-cursor { display: block; }
+  .custom-cursor-active, .custom-cursor-active * { cursor: none !important; }
+  .custom-cursor-active dialog::backdrop { cursor: none !important; }
+  .custom-cursor-active .custom-cursor { opacity: 1; }
 }
 
 body {
@@ -673,6 +727,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 .port-card { overflow: hidden; }
+/* Keep portfolio images and text clear of the card's moving glare. */
+.port-card.tilt-card::after { content: none; }
 .port-thumb {
   height: 210px;
   overflow: hidden;

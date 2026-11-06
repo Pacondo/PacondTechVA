@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PacondoTechVA — Your Automation Specialist</title>
   <link rel="icon" type="image/png" href="images/webicon.png" />
-  <link rel="stylesheet" href="css/styles.css?v=20261028-youtube" />
+  <link rel="stylesheet" href="css/styles.css?v=20261106-modal-cursor" />
   <link rel="stylesheet" href="css/playground.css" />
   <link rel="stylesheet" href="css/project-demos.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -67,9 +67,8 @@
         <h1><span class="line1">Hey!</span><br /><span class="name-muted">I'm </span><span class="name-accent">Pacondo</span></h1>
         <p class="hero-subtitle" id="heroSubtitle">Your Technical Virtual Assistant</p>
         <p class="hero-desc">
-          Passionate about building efficient, automated workflows that save time,
-          reduce errors, and keep your systems running smoothly. Let's streamline
-          your operations and create smart solutions together.
+          I'm Pacondo. I turn repetitive tasks into automated workflows,
+          connect your tools, and keep your operations running smoothly.
         </p>
         <div class="hero-btns">
           <a href="#portfolio" class="btn-primary">View my work &rarr;</a>
@@ -214,19 +213,9 @@
 
       <div class="tab-bar">
         <button class="tab-btn active" data-filter="ghl">GoHighLevel</button>
-        <button class="tab-btn" data-filter="crm">CRM</button>
         <button class="tab-btn" data-filter="zapier">Zapier</button>
         <button class="tab-btn" data-filter="n8n">N8N</button>
         <button class="tab-btn" data-filter="make">Make</button>
-      </div>
-
-      <!-- CRM Sub-tabs -->
-      <div class="sub-tab-bar" id="crmSubTabs">
-        <button class="sub-tab-btn active" data-subfilter="all">All</button>
-        <button class="sub-tab-btn" data-subfilter="monday">Monday</button>
-        <button class="sub-tab-btn" data-subfilter="hubspot">HubSpot</button>
-        <button class="sub-tab-btn" data-subfilter="salesforce">Salesforce</button>
-        <button class="sub-tab-btn" data-subfilter="pipedrive">Pipedrive</button>
       </div>
 
       <div class="portfolio-grid" id="portfolioGrid">
@@ -629,7 +618,31 @@
   <!-- ═══════════════════ LIGHTBOX ═══════════════════ -->
   <!-- ═══════════════════ RESUME MODAL ═══════════════════ -->
   <!-- ═══════════════════ CUSTOM CURSOR ═══════════════════ -->
-  <div id="cursorMirage"></div>
+  <div class="custom-cursor" id="customCursor" aria-hidden="true">
+    <span class="cursor-pointer">
+      <svg class="cursor-arrow" width="28" height="34" viewBox="0 0 28 34" fill="none" focusable="false">
+        <defs>
+          <linearGradient id="cursorPearl" x1="2" y1="2" x2="23" y2="31" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#ffffff" />
+            <stop offset="0.6" stop-color="#e1eafa" />
+            <stop offset="1" stop-color="#9db5da" />
+          </linearGradient>
+          <linearGradient id="cursorBlue" x1="2" y1="2" x2="23" y2="31" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#d4f4ff" />
+            <stop offset="0.5" stop-color="#68a5ff" />
+            <stop offset="1" stop-color="#8b6df0" />
+          </linearGradient>
+          <path id="cursorShape" d="M2 2L25 20L15.5 21L10 31L2 2Z" />
+        </defs>
+        <use href="#cursorShape" fill="url(#cursorPearl)" />
+        <use class="cursor-arrow-active" href="#cursorShape" fill="url(#cursorBlue)" />
+        <path class="cursor-facet" d="M2 2L15.5 21L10 31Z" />
+        <use href="#cursorShape" stroke="#17243b" stroke-width="1.2" stroke-linejoin="round" />
+        <path d="M3.5 4L15.5 21" stroke="white" stroke-opacity="0.65" stroke-width="0.7" />
+      </svg>
+      <span class="cursor-action"></span>
+    </span>
+  </div>
 
   <div class="resume-modal" id="resumeModal">
     <button class="lightbox-close" id="resumeClose">&times;</button>
@@ -678,8 +691,8 @@
     </div>
   </footer>
 
-  <script src="js/script.js"></script>
-  <script src="js/project-demos.js"></script>
+  <script src="js/script.js?v=20261106-faceted-cursor"></script>
+  <script src="js/project-demos.js?v=20261106-all-single-scenarios"></script>
 
   <!-- ═══════════════════ AI CHAT ═══════════════════ -->
   <button class="chat-bubble" id="chatBubble" aria-label="Open chat">

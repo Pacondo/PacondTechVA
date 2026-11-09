@@ -91,16 +91,29 @@ document.querySelectorAll('.port-gallery').forEach(gallery => {
   let idx = 0;
 
   function goTo(i) {
+    if (i < 0 || i >= thumbs.length) return;
     idx = i;
     const full = thumbs[idx].dataset.full;
     mainImg.src = full;
+    mainImg.alt = thumbs[idx].querySelector('img').alt;
     mainDiv.dataset.src = full;
     thumbs.forEach((t, ti) => t.classList.toggle('active', ti === idx));
     if (prevBtn) prevBtn.classList.toggle('hidden', idx === 0);
     if (nextBtn) nextBtn.classList.toggle('hidden', idx === thumbs.length - 1);
   }
 
-  thumbs.forEach((thumb, i) => thumb.addEventListener('click', () => goTo(i)));
+  thumbs.forEach((thumb, i) => {
+    thumb.tabIndex = 0;
+    thumb.setAttribute('role', 'button');
+    thumb.setAttribute('aria-label', `Show ${thumb.querySelector('img').alt}`);
+    thumb.addEventListener('click', () => goTo(i));
+    thumb.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        goTo(i);
+      }
+    });
+  });
   if (prevBtn) prevBtn.addEventListener('click', (e) => { e.stopPropagation(); goTo(idx - 1); });
   if (nextBtn) nextBtn.addEventListener('click', (e) => { e.stopPropagation(); goTo(idx + 1); });
 
@@ -110,7 +123,7 @@ document.querySelectorAll('.port-gallery').forEach(gallery => {
 /* ═══════════════════════════════════
    PORTFOLIO SHOW MORE / LESS
 ═══════════════════════════════════ */
-document.querySelectorAll('.port-body p').forEach(p => {
+document.querySelectorAll('.port-body > p').forEach(p => {
   if (p.scrollHeight <= p.clientHeight) return;
   const btn = document.createElement('button');
   btn.className = 'show-more-btn';
@@ -186,7 +199,9 @@ themeToggle.addEventListener('click', () => {
 ═══════════════════════════════════ */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
-    const target = document.querySelector(this.getAttribute('href'));
+    const href = this.getAttribute('href');
+    if (href === '#') return;
+    const target = document.getElementById(href.slice(1));
     if (!target) return;
     e.preventDefault();
     window.scrollTo({ top: target.offsetTop - navbar.offsetHeight - 8, behavior: 'smooth' });
@@ -313,12 +328,18 @@ const lbNext        = document.getElementById('lbNext');
 
 let lbImages = [];
 let lbIdx    = 0;
+let lbTrigger;
 
 function openLightbox(imgs, idx) {
+  lbTrigger = document.activeElement;
   lbImages = imgs;
   lbIdx    = idx;
   lightboxImg.src = lbImages[lbIdx];
   lightbox.classList.add('open');
+  lightbox.setAttribute('role', 'dialog');
+  lightbox.setAttribute('aria-modal', 'true');
+  lightbox.setAttribute('aria-label', 'Project image preview');
+  lightboxClose.focus();
   document.body.style.overflow = 'hidden';
   syncArrows();
 }
@@ -329,12 +350,23 @@ function syncArrows() {
 }
 
 function closeLightbox() {
+  if (!lightbox.classList.contains('open')) return;
   lightbox.classList.remove('open');
   document.body.style.overflow = '';
   lightboxImg.src = '';
+  lbTrigger?.focus();
 }
 
 document.querySelectorAll('.cert-clickable').forEach(el => {
+  el.tabIndex = 0;
+  el.setAttribute('role', 'button');
+  el.setAttribute('aria-label', `Enlarge ${el.querySelector('img')?.alt || 'image'}`);
+  el.addEventListener('keydown', event => {
+    if (event.target === el && (event.key === 'Enter' || event.key === ' ')) {
+      event.preventDefault();
+      el.click();
+    }
+  });
   el.addEventListener('click', () => {
     const gallery = el.closest('.port-gallery');
     if (gallery) {
@@ -353,38 +385,14 @@ lightboxClose.addEventListener('click', closeLightbox);
 lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
 document.addEventListener('keydown', (e) => {
   if (!lightbox.classList.contains('open')) return;
+  if (e.key === 'Tab') {
+    const controls = [lightboxClose, lbPrev, lbNext].filter(el => !el.classList.contains('hidden'));
+    const current = controls.indexOf(document.activeElement);
+    const next = (current + (e.shiftKey ? -1 : 1) + controls.length) % controls.length;
+    e.preventDefault();
+    controls[next].focus();
+  }
   if (e.key === 'Escape') closeLightbox();
   if (e.key === 'ArrowLeft'  && lbIdx > 0) { lbIdx--; lightboxImg.src = lbImages[lbIdx]; syncArrows(); }
   if (e.key === 'ArrowRight' && lbIdx < lbImages.length - 1) { lbIdx++; lightboxImg.src = lbImages[lbIdx]; syncArrows(); }
 });
-
-/* ═══════════════════════════════════
-   3D CARD TILT
-═══════════════════════════════════ */
-const canTilt = window.matchMedia('(hover: hover) and (pointer: fine)').matches &&
-                !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-if (canTilt) {
-  const MAX_TILT = 9;
-  document.querySelectorAll('.port-card, .service-card, .cert-card').forEach(card => {
-    card.classList.add('tilt-card');
-
-    card.addEventListener('mouseenter', () => card.classList.add('is-tilting'));
-
-    card.addEventListener('mousemove', e => {
-      const r = card.getBoundingClientRect();
-      const px = (e.clientX - r.left) / r.width;
-      const py = (e.clientY - r.top) / r.height;
-      card.style.setProperty('--glare-x', `${px * 100}%`);
-      card.style.setProperty('--glare-y', `${py * 100}%`);
-      card.style.transform =
-        `perspective(900px) rotateX(${(0.5 - py) * MAX_TILT}deg) ` +
-        `rotateY(${(px - 0.5) * MAX_TILT}deg) translateY(-5px)`;
-    });
-
-    card.addEventListener('mouseleave', () => {
-      card.classList.remove('is-tilting');
-      card.style.transform = '';
-    });
-  });
-}

@@ -162,26 +162,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   box-shadow: var(--shadow);
 }
 
-/* 3D tilt — JS adds .tilt-card only on mouse devices without reduced-motion */
-.tilt-card { position: relative; }
-.tilt-card::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: radial-gradient(circle at var(--glare-x, 50%) var(--glare-y, 50%),
-                              rgba(255,255,255,0.16), transparent 55%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-  z-index: 3;
-}
-.tilt-card.is-tilting::after { opacity: 1; }
-/* transform omitted so the tilt tracks the cursor instead of lagging behind it */
-.tilt-card.is-tilting {
-  transition: border-color var(--ease), box-shadow var(--ease), background var(--ease);
-}
-
 /* ═══════════════════════════════════════════════════
    TAGS
 ═══════════════════════════════════════════════════ */
@@ -730,8 +710,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 .port-card { overflow: hidden; }
-/* Keep portfolio images and text clear of the card's moving glare. */
-.port-card.tilt-card::after { content: none; }
 .port-thumb {
   height: 210px;
   overflow: hidden;

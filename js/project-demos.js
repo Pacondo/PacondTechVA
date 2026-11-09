@@ -275,7 +275,7 @@
     const button = document.createElement('button');
     button.type = 'button';
     button.className = 'project-demo-launch';
-    button.textContent = 'Try demo ↗';
+    button.textContent = 'Run sample simulation ↗';
     button.setAttribute('aria-haspopup', 'dialog');
     button.setAttribute('aria-label', `Try demo: ${card.querySelector('h3').textContent}`);
     card.querySelector('.port-body').append(button);

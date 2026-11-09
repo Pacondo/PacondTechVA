@@ -304,10 +304,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 ═══════════════════════════════════════════════════ */
 .hero {
   position: relative;
-  min-height: 100vh;
+  min-height: auto;
   display: flex;
   align-items: center;
-  padding: 160px 0 100px;
+  padding: 120px 0 64px;
   overflow: hidden;
 }
 
@@ -335,10 +335,12 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .hero-inner {
   position: relative;
   z-index: 1;
+  width: 100%;
+  max-width: 1360px;
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
-  gap: 160px;
+  gap: clamp(32px, 6vw, 96px);
 }
 
 /* badge — line style */
@@ -480,8 +482,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 /* profile photo */
 .hero-photo {
   position: relative;
-  width: 420px;
-  height: 420px;
+  width: clamp(260px, 32vw, 420px);
+  height: auto;
+  aspect-ratio: 1;
   border-radius: 50%;
   overflow: hidden;
   background: #6f7684;
@@ -826,6 +829,18 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   overflow: visible;
   -webkit-line-clamp: unset;
 }
+.project-outcome {
+  margin: 14px 0;
+  padding: 12px 14px;
+  border-left: 3px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+  background: var(--bg-alt);
+  color: var(--txt-2);
+  font-size: 13px;
+  line-height: 1.7;
+}
+.project-outcome strong { color: var(--txt); }
+
 .show-more-btn {
   background: none;
   border: none;

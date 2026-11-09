@@ -1,29 +1,14 @@
-/* Native details and dialog keep the case study keyboard accessible. */
+/* Highlight the section currently being read. Image interactions use image-viewer.js. */
 (() => {
-  const dialog = document.querySelector('.screenshot-dialog');
-  const image = dialog.querySelector('img');
-  let trigger;
-  let previousOverflow;
-  document.querySelectorAll('.screenshot-open').forEach(button => {
-    button.addEventListener('click', () => {
-      trigger = button;
-      const preview = button.querySelector('img');
-      image.src = preview.src;
-      image.alt = preview.alt;
-      dialog.querySelector('p').textContent = preview.alt;
-      previousOverflow = document.body.style.overflow;
-      document.body.style.overflow = 'hidden';
-      dialog.showModal();
+  const links = [...document.querySelectorAll('.case-toc a')];
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      links.forEach(link => {
+        if (link.hash === '#' + entry.target.id) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
     });
-  });
-  dialog.querySelector('button').addEventListener('click', () => dialog.close());
-  dialog.addEventListener('click', event => {
-    const box = dialog.getBoundingClientRect();
-    if (event.target === dialog && (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom)) dialog.close();
-  });
-  dialog.addEventListener('close', () => {
-    document.body.style.overflow = previousOverflow;
-    image.removeAttribute('src');
-    trigger?.focus();
-  });
+  }, { rootMargin: '-10% 0px -65% 0px', threshold: 0 });
+  links.forEach(link => observer.observe(document.querySelector(link.hash)));
 })();

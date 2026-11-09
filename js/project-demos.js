@@ -275,10 +275,10 @@
     const button = document.createElement('button');
     button.type = 'button';
     button.className = 'project-demo-launch';
-    button.textContent = 'Run sample simulation ↗';
+    button.textContent = 'Run Sample Simulation';
     button.setAttribute('aria-haspopup', 'dialog');
     button.setAttribute('aria-label', `Try demo: ${card.querySelector('h3').textContent}`);
-    card.querySelector('.port-body').append(button);
+    (card.querySelector('.project-actions') || card.querySelector('.port-body')).append(button);
     button.addEventListener('click', () => {
       current = config;
       trigger = button;

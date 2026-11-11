@@ -6,7 +6,7 @@
   <title>PacondoTechVA | GoHighLevel, CRM &amp; AI Automation Specialist</title>
   <meta name="description" content="Explore Pacondo’s GoHighLevel, n8n, Make, and Zapier projects: CRM workflows, AI integrations, REST APIs, and webhooks. View case studies and get in touch.">
   <link rel="icon" type="image/png" href="images/webicon.png" />
-  <link rel="stylesheet" href="css/styles.css?v=20261109-polish" />
+  <link rel="stylesheet" href="css/styles.css?v=20261111-chat-attention" />
   <link rel="stylesheet" href="css/playground.css" />
   <link rel="stylesheet" href="css/project-demos.css" />
   <link rel="stylesheet" href="css/portfolio.css?v=20261109-polish" />
@@ -449,40 +449,42 @@
   <script src="js/project-demos.js?v=20261109-polish"></script>
 
   <!-- ═══════════════════ AI CHAT ═══════════════════ -->
-  <button class="chat-bubble" id="chatBubble" aria-label="Open chat">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-    <span class="chat-bubble-dot"></span>
-  </button>
 
-  <div class="chat-window" id="chatWindow" role="dialog" aria-label="Chat with Pacondo's assistant">
+
+  <div class="chat-window chat-idle" id="chatWindow" role="dialog" aria-label="Chat with Pacondo's assistant" aria-hidden="true" inert>
     <div class="chat-header">
       <div class="chat-header-info">
-        <div class="chat-avatar">P</div>
+        <div class="chat-avatar" aria-hidden="true"></div>
         <div>
-          <div class="chat-name">Pacondo's Assistant</div>
-          <div class="chat-status"><span class="chat-online-dot"></span> Usually replies instantly</div>
+          <div class="chat-name">Ask my AI</div>
+          <div class="chat-status"><span class="chat-online-dot"></span> AI assistant</div>
         </div>
       </div>
       <button class="chat-close" id="chatClose" aria-label="Close chat">&times;</button>
     </div>
 
     <div class="chat-messages" id="chatMessages">
-      <div class="chat-msg bot"><span>Hey! 👋 I'm Pacondo's assistant. Ask me about his automation work, the tools he uses, or how to get in touch.</span></div>
+      <div class="chat-msg bot"><span>Explore my automation projects. Ask about my work, the tools I use, or a workflow you want to build.</span></div>
       <div class="chat-suggestions" id="chatSuggestions">
-        <button class="chat-chip">What does Pacondo do?</button>
-        <button class="chat-chip">What tools does he use?</button>
-        <button class="chat-chip">How do I hire him?</button>
+        <button class="chat-chip">What has Pacondo built?</button>
+        <button class="chat-chip">Can he automate my follow-ups?</button>
+        <button class="chat-chip">How can I work with him?</button>
       </div>
     </div>
 
     <div class="chat-input-row">
-      <input type="text" class="chat-input" id="chatInput" placeholder="Type a message…" autocomplete="off" maxlength="500" />
+      <input type="text" class="chat-input" id="chatInput" aria-label="Message Pacondo's assistant" placeholder="Ask about my work…" autocomplete="off" maxlength="500" />
       <button class="chat-send" id="chatSend" aria-label="Send">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5m-6 6 6-6 6 6"/></svg>
       </button>
     </div>
   </div>
 
-  <script src="js/chat.js?v=20261028-webhook"></script>
+  <button class="chat-bubble" id="chatBubble" type="button" aria-label="Open chat with Pacondo's assistant. 1 unread welcome message." aria-controls="chatWindow" aria-expanded="false">
+    <svg class="chat-bubble-icon" width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 11.5a7.5 7.5 0 0 1-7.5 7.5H7l-4 3V11.5A7.5 7.5 0 0 1 10.5 4h2a7.5 7.5 0 0 1 7.5 7.5Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7.5" cy="11.5" r="1" fill="currentColor"/><circle cx="11.5" cy="11.5" r="1" fill="currentColor"/><circle cx="15.5" cy="11.5" r="1" fill="currentColor"/></svg>
+    <span class="chat-unread" id="chatUnread" aria-hidden="true">1</span>
+  </button>
+
+  <script src="js/chat.js?v=20261111-chat-popup"></script>
 </body>
 </html>

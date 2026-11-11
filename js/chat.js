@@ -14,6 +14,7 @@ const chatClose    = document.getElementById('chatClose');
 const chatMessages = document.getElementById('chatMessages');
 const chatInput    = document.getElementById('chatInput');
 const chatSend     = document.getElementById('chatSend');
+const chatUnread   = document.getElementById('chatUnread');
 
 const CONTACT_FALLBACK =
   "Sorry — I couldn't reach the server just now. You can still reach Pacondo through the " +
@@ -21,20 +22,53 @@ const CONTACT_FALLBACK =
 
 let history = [];
 let awaitingReply = false;
+let unreadCount = chatMessages.querySelectorAll('.chat-msg.bot').length;
+
+function updateUnread() {
+  chatUnread.hidden = unreadCount === 0;
+  chatUnread.textContent = unreadCount > 9 ? '9+' : String(unreadCount);
+  const notification = unreadCount ? ` ${unreadCount} unread ${unreadCount === 1 ? 'message' : 'messages'}.` : '';
+  chatBubble.setAttribute('aria-label', `Open chat with Pacondo's assistant.${notification}`);
+}
+
+function setChatOpen(open, focus = true) {
+  chatWindow.classList.toggle('open', open);
+  chatWindow.inert = !open;
+  chatWindow.setAttribute('aria-hidden', String(!open));
+  chatBubble.classList.toggle('hide', open);
+  chatBubble.setAttribute('aria-expanded', String(open));
+  if (open) {
+    unreadCount = 0;
+    updateUnread();
+    if (focus) chatInput.focus();
+    chatBubble.inert = true;
+  } else {
+    chatBubble.inert = false;
+    if (focus) chatBubble.focus();
+  }
+}
+
+updateUnread();
+setChatOpen(false, false);
 
 chatBubble.addEventListener('click', () => {
-  const open = chatWindow.classList.toggle('open');
-  chatBubble.classList.toggle('hide', open);
-  if (open) chatInput.focus();
+  setChatOpen(true);
 });
 
 chatClose.addEventListener('click', () => {
-  chatWindow.classList.remove('open');
-  chatBubble.classList.remove('hide');
+  setChatOpen(false);
+});
+
+chatWindow.addEventListener('keydown', event => {
+  if (event.key === 'Escape') {
+    event.preventDefault();
+    setChatOpen(false);
+  }
 });
 
 document.querySelectorAll('.chat-chip').forEach(chip => {
   chip.addEventListener('click', () => {
+    if (awaitingReply) return;
     const text = chip.textContent;
     document.getElementById('chatSuggestions')?.remove();
     send(text);
@@ -53,6 +87,7 @@ function submit() {
 }
 
 async function send(text) {
+  chatWindow.classList.remove('chat-idle');
   appendMsg(escapeHtml(text), 'user');
   history.push({ role: 'user', content: text });
 
@@ -98,6 +133,10 @@ function appendMsg(html, who) {
   div.innerHTML = `<span>${html}</span>`;
   chatMessages.appendChild(div);
   chatMessages.scrollTop = chatMessages.scrollHeight;
+  if (who === 'bot' && !chatWindow.classList.contains('open')) {
+    unreadCount++;
+    updateUnread();
+  }
   return div;
 }
 

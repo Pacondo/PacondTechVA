@@ -6,15 +6,15 @@
   const workflows = {
     leads: {
       steps: [['Lead arrives', 'Website form'], ['AI qualifies', 'Find the right fit'], ['CRM updated', 'Everything in sync'], ['Follow-up sent', 'A personal welcome']],
-      result: 'Demo complete. A new lead, qualified and welcomed.'
+      result: 'Workflow complete. A new lead, qualified and welcomed.'
     },
     invoices: {
       steps: [['Invoice is due', 'Xero trigger'], ['Balance checked', 'Confirm what is owed'], ['Reminder drafted', 'AI-assisted message'], ['Follow-up queued', 'Ready for review']],
-      result: 'Demo complete. A timely reminder, ready for review.'
+      result: 'Workflow complete. A timely reminder, ready for review.'
     },
     booking: {
       steps: [['Comment arrives', 'Instagram trigger'], ['Message sent', 'ManyChat reply'], ['Booking shared', 'GoHighLevel calendar'], ['CRM updated', 'Keep the team in sync']],
-      result: 'Demo complete. From a comment to a booking invitation.'
+      result: 'Workflow complete. From a comment to a booking invitation.'
     }
   };
   const options = [...playground.querySelectorAll('.workflow-option')];
@@ -26,7 +26,7 @@
     clearTimeout(timer);
     running = false;
     runButton.disabled = false;
-    runButton.innerHTML = '<span aria-hidden="true">▶</span> Run demo';
+    runButton.innerHTML = '<span aria-hidden="true">▶</span> Run workflow';
     steps.forEach((step, i) => {
       step.classList.remove('is-active', 'is-complete');
       step.querySelector('.step-icon').textContent = String(i + 1).padStart(2, '0');
@@ -45,7 +45,7 @@
     });
     status.textContent = workflows[selected].result;
     runButton.disabled = false;
-    runButton.innerHTML = '<span aria-hidden="true">↻</span> Replay demo';
+    runButton.innerHTML = '<span aria-hidden="true">↻</span> Replay workflow';
   }
   options.forEach(option => option.addEventListener('click', () => {
     selected = option.dataset.workflow;

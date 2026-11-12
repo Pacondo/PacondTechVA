@@ -23,7 +23,7 @@
         ['Source message', `${name}: “${intent}.”`],
         ['Extracted fields', `Name: ${name}\nInterest: property purchase\nIntent: ${intent}`],
         ['Sample classification', 'High intent → agent follow-up.'],
-        ['GoHighLevel payload preview', JSON.stringify({ name, interest: 'property', qualification: 'high', source: 'n8n demo' }, null, 2)]
+        ['GoHighLevel payload preview', JSON.stringify({ name, interest: 'property', qualification: 'high', source: 'n8n sample' }, null, 2)]
       ]
     },
     instagram: {
@@ -43,9 +43,9 @@
       fields: [['name', 'Client name', 'Morgan'], ['intent', 'Invoice status', ['14 days overdue']]],
       steps: ['Xero invoice checked', 'Payment status reviewed', 'Reminder drafted', 'Activity logged'],
       run: ({ name, intent }) => [
-        ['Sample invoice', `INV-DEMO-104 · Client: ${name} · Amount: $450.00`],
+        ['Sample invoice', `INV-104 · Client: ${name} · Amount: $450.00`],
         ['Balance check', `Balance: $450.00. Status: ${intent}.`],
-        ['Sample email preview', `Hi ${name}, a friendly reminder about invoice INV-DEMO-104 for $450.00. Please let us know if you need a copy or have any questions.`],
+        ['Sample email preview', `Hi ${name}, a friendly reminder about invoice INV-104 for $450.00. Please let us know if you need a copy or have any questions.`],
         ['Sample activity log', 'Overdue → reminder prepared → sample Gmail send step → outcome logged. No email was sent.']
       ]
     },
@@ -116,18 +116,18 @@
   dialog.setAttribute('aria-labelledby', 'projectDemoTitle');
   dialog.setAttribute('aria-describedby', 'projectDemoNote');
   dialog.innerHTML = `
-    <div class="project-demo-header"><span class="project-demo-eyebrow">PROJECT PLAYGROUND</span><button type="button" class="project-demo-close" aria-label="Close project demo">&times;</button></div>
+    <div class="project-demo-header"><span class="project-demo-eyebrow">PROJECT PLAYGROUND</span><button type="button" class="project-demo-close" aria-label="Close project simulation">&times;</button></div>
     <h2 id="projectDemoTitle"></h2>
     <p class="project-demo-intro"></p>
     <p id="projectDemoNote" class="project-demo-note">Interactive simulation · Sample data only. No messages, bookings, or external updates are sent. AI responses are scripted examples.</p>
     <div class="automation-playground">
       <div class="workflow-console">
-        <div class="console-top"><span><span class="playground-status-dot" aria-hidden="true"></span> AUTOMATION PLAYGROUND</span><span class="demo-label">INTERACTIVE DEMO</span></div>
+        <div class="console-top"><span><span class="playground-status-dot" aria-hidden="true"></span> AUTOMATION PLAYGROUND</span><span class="demo-label">INTERACTIVE SIMULATION</span></div>
         <div class="workflow-options" role="group" aria-label="Sample scenario"></div>
         <ol class="workflow-steps"></ol>
         <div class="project-demo-meter" role="progressbar" aria-label="Workflow progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div>
         <div class="project-demo-result" hidden></div>
-        <div class="console-bottom"><p class="project-demo-status" role="status" aria-live="polite"></p><button type="button" class="run-workflow">▶ Run demo</button></div>
+        <div class="console-bottom"><p class="project-demo-status" role="status" aria-live="polite"></p><button type="button" class="run-workflow">▶ Run workflow</button></div>
       </div>
     </div>`;
   document.body.append(dialog);
@@ -206,7 +206,7 @@
     outputs = null;
     updateProgress(0);
     result.hidden = true;
-    run.textContent = '▶ Run demo';
+    run.textContent = '▶ Run workflow';
     status.textContent = 'Your workflow is ready to run.';
     [...steps.children].forEach((item, index) => {
       item.className = 'workflow-step';
@@ -255,8 +255,8 @@
     const text = document.createElement('p');
     text.textContent = outputs[outputs.length - 1][1];
     result.replaceChildren(heading, text);
-    status.textContent = 'Demo complete. Replay to watch the workflow again.';
-    run.textContent = '↻ Replay demo';
+    status.textContent = 'Workflow complete. Replay to watch the workflow again.';
+    run.textContent = '↻ Replay workflow';
   }
   run.addEventListener('click', () => {
     reset();
@@ -277,7 +277,7 @@
     button.className = 'project-demo-launch';
     button.textContent = 'Run Sample Simulation';
     button.setAttribute('aria-haspopup', 'dialog');
-    button.setAttribute('aria-label', `Try demo: ${card.querySelector('h3').textContent}`);
+    button.setAttribute('aria-label', `Run sample simulation: ${card.querySelector('h3').textContent}`);
     (card.querySelector('.project-actions') || card.querySelector('.port-body')).append(button);
     button.addEventListener('click', () => {
       current = config;

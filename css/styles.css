@@ -1,6 +1,14 @@
 /* ═══════════════════════════════════════════════════
    DESIGN TOKENS
 ═══════════════════════════════════════════════════ */
+@font-face {
+  font-family: 'Dancing Script';
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+  src: url('../images/fonts/DancingScript-Bold.ttf') format('truetype');
+}
+
 :root {
   --bg:          #1e1e1e;
   --bg-alt:      #242424;
@@ -375,6 +383,41 @@ section[id] { scroll-margin-top: 90px; }
   cursor: default;
 }
 .name-accent:hover { color: #ffffff; }
+
+/* Pen paths reveal the live cursive text without changing its layout. */
+.hero-greeting > [data-handwriting] { position: relative; }
+.handwriting-ink {
+  display: none;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+.handwriting-ink text {
+  font-family: 'Dancing Script', cursive;
+  font-size: 100px;
+  font-weight: 700;
+  fill: currentColor;
+}
+.hero-greeting.is-writing .handwriting-text { opacity: 0; }
+.hero-greeting.is-writing .handwriting-ink { display: block; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-text > .badge {
+    animation: hero-badge-in 800ms cubic-bezier(0.16, 1, 0.3, 1) 60ms both;
+  }
+}
+@keyframes hero-badge-in {
+  from { opacity: 0; transform: translate3d(0, 22px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-greeting.is-writing .handwriting-text { opacity: 1; }
+  .hero-greeting.is-writing .handwriting-ink { display: none; }
+}
+
 .hero-subtitle {
   font-size: 18px;
   font-weight: 500;

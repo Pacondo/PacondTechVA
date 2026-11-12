@@ -25,6 +25,11 @@ router or rewrite rules.
 - `js/case-study.js`: active section navigation while reading the case study.
 - `js/script.js`: homepage navigation, theme switch, project filters and counts,
   reduced-motion handling, and the existing resume interaction.
+- `js/hero-handwriting.js`: SVG pen masks write the greeting once per page load,
+  then restore the normal selectable heading. The stroke data matches the fixed
+  words “Hey!”, “I'm”, and “Pacondo”; update the masks when changing that copy.
+  The same Dancing Script Bold font is bundled in `images/fonts/` with its license.
+  Reduced motion, font-loading failures, and disabled JavaScript show plain text.
 - `js/project-demos.js`: existing demos retained and labeled sample simulations.
 
 ## Screenshots

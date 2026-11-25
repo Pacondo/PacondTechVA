@@ -15,13 +15,19 @@ router or rewrite rules.
   frames, responsive layouts, and case study styling.
 - `css/styles.css`: shared typography, accessible colors, focus indicators, and
   light-theme tokens.
-- `css/image-viewer.css`: shared fit-to-screen and full-resolution viewer layouts.
-- `css/landing-pages.css`: responsive landing page showcase cards, using
-  `images/landing pages/Roofing Business.png` and
-  `images/landing pages/dance studio.png`. The dedicated `#landing-pages` section
-  is linked from the main navigation and footer.
-- `js/landing-gallery.js`: touch swiping, mouse dragging, previous/next controls,
-  keyboard navigation, slide announcements, and reduced-motion support.
+- `css/image-viewer.css`: shared fit-to-screen and full-resolution viewer layouts,
+  with the image, border, and controls zooming in together on opening, plus a
+  backdrop fade; reduced motion skips those animations. The animated panel sits
+  inside the dialog so the custom cursor keeps its viewport position.
+- `css/landing-pages.css`: the landing page carousel: an open, frameless reel
+  whose neighbor cards run out to the section's edges, the highlight ring,
+  controls bar, and the "Show all" grid. Screenshots live in `images/landing pages/`. The dedicated
+  `#landing-pages` section is linked from the main navigation and footer.
+- `js/landing-gallery.js`: center-focus carousel. Places every card from one
+  continuous reel position (looping with 3+ designs) and handles touch swipes,
+  mouse drags and flicks, clicking a peeking neighbor, dots,
+  Left/Right/Home/End keys, horizontal trackpad swipes, the "Show all" grid,
+  screen reader announcements, and reduced motion.
 - `projects/larkhaven-realty/index.html`: case study copy, workflow explanations,
   technology details, screenshot references, and SEO metadata.
 - `js/project-gallery.js`: preview selection, thumbnail keyboard navigation,
@@ -53,13 +59,19 @@ they determine whether the preview should scroll. Update the initial viewport
 image as well if it is the first screenshot. The original image is retained for
 the full-resolution viewer; loading is lazy and asynchronous.
 
-The landing page showcase uses `.landing-design-card` articles in `index.html`.
-Its preview buttons reuse `.screenshot-open` and the shared image viewer, including
-zoom, previous/next, Escape, and focus return. Designs appear one at a time in a
-horizontal gallery with touch swiping, mouse dragging, Previous/Next buttons,
-and Left/Right/Home/End keys. Keep the compact title-only captions. Add new
-designs as sibling articles; the gallery derives its slide count from the markup.
-Keep screenshot paths, alt text, and dimensions in sync when replacing designs.
+The landing page showcase uses `.landing-design-card` articles inside
+`.landing-reel` in `index.html`. The active design sits in the center of the
+stage while the previous and next designs peek in from both sides; swiping,
+dragging, clicking a peeking design, or the dots bring a design to the
+center. Clicking the centered image or its "Preview design" link opens the
+shared image viewer (zoom, previous/next, Escape, focus return). In "Show all,"
+clicking a design image or its preview link opens that viewer and keeps the grid
+expanded; closing the viewer returns focus to the clicked preview. To add a
+design, copy one of the later articles as a sibling inside `.landing-reel` and
+update the image `src`, `alt`, and `width`/`height`, the `h3` title, and the
+preview link's `href` and `aria-label`. The script numbers the labels, builds
+the dots, and derives the count from the markup. Keep
+screenshot paths, alt text, and dimensions in sync when replacing designs.
 
 Case study screenshots are in the `#screenshots` section of
 `projects/larkhaven-realty/index.html`. Existing images remain in `images/n8n/`

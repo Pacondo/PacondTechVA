@@ -11,8 +11,8 @@
   <link rel="stylesheet" href="css/playground.css" />
   <link rel="stylesheet" href="css/project-demos.css" />
   <link rel="stylesheet" href="css/portfolio.css?v=20261124-summary-alignment" />
-  <link rel="stylesheet" href="css/image-viewer.css" />
-  <link rel="stylesheet" href="css/landing-pages.css?v=landing-pages-swipe-gallery" />
+  <link rel="stylesheet" href="css/image-viewer.css?v=20261125-frame-zoom" />
+  <link rel="stylesheet" href="css/landing-pages.css?v=20261125-landing-grid-preview" />
   <script src="js/hero-handwriting.js?v=20261111-handwriting" defer></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -132,7 +132,7 @@
   <section class="portfolio section" id="portfolio">
     <div class="container">
       <div class="section-head">
-        <span class="project-eyebrow">SELECTED WORK / CRM & AUTOMATION</span><h2>Connected tools. Clearer operations.</h2><p>Explore workflows that turn incoming information into an organized next step.</p>
+        <span class="project-eyebrow">SELECTED WORK / CRM & AUTOMATION</span><h2>Connected tools. Clearer operations.</h2>
       </div>
 
       <div class="tab-bar" role="group" aria-label="Filter projects by platform">
@@ -256,36 +256,113 @@
       <div class="section-head">
         <span class="project-eyebrow">WEB DESIGN</span>
         <h2 id="landing-pages-heading">Landing Pages</h2>
-        <p>Focused pages that introduce an offer and give visitors a clear next step.</p>
       </div>
 
-      <div class="landing-gallery" role="region" aria-roledescription="carousel" aria-label="Landing page designs">
-        <div class="landing-design-grid" id="landingGalleryTrack" tabindex="0" role="group" aria-label="Landing page gallery">
-          <article class="landing-design-card">
-            <button type="button" class="landing-design-preview screenshot-open" aria-haspopup="dialog">
-              <span class="landing-preview-window"><img src="images/landing pages/Roofing Business.png" alt="Ridgeway Roofing landing page with service messaging, roofing imagery, and a free inspection call to action" width="1864" height="924" loading="lazy" decoding="async" /></span>
-              <span class="landing-preview-action">Preview design</span>
-            </button>
-            <div class="landing-design-body">
-              <h3>Roofing Business</h3>
-            </div>
-          </article>
+      <div class="landing-carousel" role="region" aria-roledescription="carousel" aria-label="Landing page designs">
+        <div class="landing-carousel-views">
+          <div class="landing-stage landing-view" id="landingStage" tabindex="0" role="group" aria-label="Landing page slides">
+            <div class="landing-reel">
+              <article class="landing-design-card is-active">
+                <div class="landing-card-image">
+                  <img src="images/landing pages/Roofing Business.png" alt="Ridgeway Roofing landing page with service messaging, roofing imagery, and a free inspection call to action" width="1864" height="924" loading="lazy" decoding="async" draggable="false" />
+                </div>
+                <div class="landing-card-footer">
+                  <div class="landing-card-heading">
+                    <span class="landing-card-label">01 &#183; ROOFING BUSINESS</span>
+                    <h3>Roofing Business</h3>
+                  </div>
+                  <a class="landing-preview-link" href="images/landing pages/Roofing Business.png" aria-haspopup="dialog" aria-label="Preview design: Roofing Business"><span class="landing-preview-text">Preview design</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10" /></svg></a>
+                </div>
+              </article>
 
-          <article class="landing-design-card">
-            <button type="button" class="landing-design-preview screenshot-open" aria-haspopup="dialog">
-              <span class="landing-preview-window"><img src="images/landing pages/dance studio.png" alt="Rhythm House dance studio landing page with dance class imagery and a trial class call to action" width="1846" height="803" loading="lazy" decoding="async" /></span>
-              <span class="landing-preview-action">Preview design</span>
-            </button>
-            <div class="landing-design-body">
-              <h3>Dance Studio</h3>
+              <article class="landing-design-card" aria-hidden="true">
+                <div class="landing-card-image">
+                  <img src="images/landing pages/dance studio.png" alt="Rhythm House dance studio landing page with dance class imagery and a trial class call to action" width="1846" height="803" loading="lazy" decoding="async" draggable="false" />
+                </div>
+                <div class="landing-card-footer">
+                  <div class="landing-card-heading">
+                    <span class="landing-card-label">02 &#183; DANCE STUDIO</span>
+                    <h3>Dance Studio</h3>
+                  </div>
+                  <a class="landing-preview-link" href="images/landing pages/dance studio.png" tabindex="-1" aria-haspopup="dialog" aria-label="Preview design: Dance Studio"><span class="landing-preview-text">Preview design</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10" /></svg></a>
+                </div>
+              </article>
+
+              <article class="landing-design-card" aria-hidden="true">
+                <div class="landing-card-image">
+                  <img src="images/landing pages/HVAC Business.png" alt="ClearFlow HVAC landing page with heating and cooling services and a service request call to action" width="1864" height="921" loading="lazy" decoding="async" draggable="false" />
+                </div>
+                <div class="landing-card-footer">
+                  <div class="landing-card-heading">
+                    <span class="landing-card-label">03 &#183; HVAC BUSINESS</span>
+                    <h3>HVAC Business</h3>
+                  </div>
+                  <a class="landing-preview-link" href="images/landing pages/HVAC Business.png" tabindex="-1" aria-haspopup="dialog" aria-label="Preview design: HVAC Business"><span class="landing-preview-text">Preview design</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10" /></svg></a>
+                </div>
+              </article>
+
+              <article class="landing-design-card" aria-hidden="true">
+                <div class="landing-card-image">
+                  <img src="images/landing pages/Online Coaching.png" alt="Stride Coaching landing page with online personal fitness coaching, workout imagery, and a training plans call to action" width="1862" height="923" loading="lazy" decoding="async" draggable="false" />
+                </div>
+                <div class="landing-card-footer">
+                  <div class="landing-card-heading">
+                    <span class="landing-card-label">04 &#183; ONLINE COACHING</span>
+                    <h3>Online Coaching</h3>
+                  </div>
+                  <a class="landing-preview-link" href="images/landing pages/Online Coaching.png" tabindex="-1" aria-haspopup="dialog" aria-label="Preview design: Online Coaching"><span class="landing-preview-text">Preview design</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10" /></svg></a>
+                </div>
+              </article>
+
+              <article class="landing-design-card" aria-hidden="true">
+                <div class="landing-card-image">
+                  <img src="images/landing pages/GlossworkAndAutodeatailing.png" alt="Glossworks Auto Detailing landing page with a silver sports car, exterior and interior care services, and a detailing quote call to action" width="1845" height="906" loading="lazy" decoding="async" draggable="false" />
+                </div>
+                <div class="landing-card-footer">
+                  <div class="landing-card-heading">
+                    <span class="landing-card-label">05 &#183; AUTO DETAILING</span>
+                    <h3>Auto Detailing</h3>
+                  </div>
+                  <a class="landing-preview-link" href="images/landing pages/GlossworkAndAutodeatailing.png" tabindex="-1" aria-haspopup="dialog" aria-label="Preview design: Auto Detailing"><span class="landing-preview-text">Preview design</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10" /></svg></a>
+                </div>
+              </article>
+
+              <article class="landing-design-card" aria-hidden="true">
+                <div class="landing-card-image">
+                  <img src="images/landing pages/interior design business.png" alt="Alder Interiors landing page with residential interior design messaging, living room photography, and a start a conversation call to action" width="1864" height="916" loading="lazy" decoding="async" draggable="false" />
+                </div>
+                <div class="landing-card-footer">
+                  <div class="landing-card-heading">
+                    <span class="landing-card-label">06 &#183; INTERIOR DESIGN</span>
+                    <h3>Interior Design</h3>
+                  </div>
+                  <a class="landing-preview-link" href="images/landing pages/interior design business.png" tabindex="-1" aria-haspopup="dialog" aria-label="Preview design: Interior Design"><span class="landing-preview-text">Preview design</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10" /></svg></a>
+                </div>
+              </article>
+
+              <article class="landing-design-card" aria-hidden="true">
+                <div class="landing-card-image">
+                  <img src="images/landing pages/skin studio.png" alt="Luma Skin Studio landing page with facial treatment photography, skincare products, and a facial menu call to action" width="1852" height="921" loading="lazy" decoding="async" draggable="false" />
+                </div>
+                <div class="landing-card-footer">
+                  <div class="landing-card-heading">
+                    <span class="landing-card-label">07 &#183; SKIN STUDIO</span>
+                    <h3>Skin Studio</h3>
+                  </div>
+                  <a class="landing-preview-link" href="images/landing pages/skin studio.png" tabindex="-1" aria-haspopup="dialog" aria-label="Preview design: Skin Studio"><span class="landing-preview-text">Preview design</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10" /></svg></a>
+                </div>
+              </article>
             </div>
-          </article>
+          </div>
+          <div class="landing-all-grid landing-view" id="landingAllProjects" role="list" aria-label="All landing page designs" hidden></div>
         </div>
-        <div class="landing-gallery-controls" hidden>
-          <button type="button" class="landing-gallery-prev" aria-label="Previous landing page" aria-controls="landingGalleryTrack">Previous</button>
-          <p class="landing-gallery-status" role="status" aria-live="polite" aria-atomic="true">1 / 2</p>
-          <button type="button" class="landing-gallery-next" aria-label="Next landing page" aria-controls="landingGalleryTrack">Next</button>
+        <div class="landing-carousel-controls">
+          <p class="landing-carousel-counter">1 / 7</p>
+          <div class="landing-carousel-nav">
+            <div class="landing-carousel-dots" role="group" aria-label="Choose a design"></div>
+          </div>
         </div>
+        <p class="landing-carousel-status" aria-live="polite" aria-atomic="true"></p>
       </div>
     </div>
   </section>
@@ -484,10 +561,10 @@
     </div>
   </footer>
 
-  <script src="js/image-viewer.js"></script>
-  <script src="js/landing-gallery.js?v=landing-gallery-swipe"></script>
+  <script src="js/image-viewer.js?v=20261125-frame-zoom"></script>
+  <script src="js/landing-gallery.js?v=20261125-landing-grid-preview"></script>
   <script src="js/project-gallery.js"></script>
-  <script src="js/script.js?v=20261109-polish"></script>
+  <script src="js/script.js?v=20261125-landing-grid-preview"></script>
   <script src="js/project-demos.js?v=20261112-wording"></script>
 
   <!-- ═══════════════════ AI CHAT ═══════════════════ -->

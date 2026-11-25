@@ -4,20 +4,23 @@
   dialog.className = 'image-viewer';
   dialog.setAttribute('aria-label', 'Project image viewer');
   dialog.innerHTML = `
-    <div class="viewer-toolbar">
-      <span class="viewer-count" aria-live="polite"></span>
-      <div class="viewer-tools">
-        <button type="button" class="viewer-zoom" aria-pressed="false">View at 100%</button>
-        <button type="button" class="viewer-close" aria-label="Close image viewer">&times;</button>
+    <div class="viewer-panel">
+      <div class="viewer-toolbar">
+        <span class="viewer-count" aria-live="polite"></span>
+        <div class="viewer-tools">
+          <button type="button" class="viewer-zoom" aria-pressed="false">View at 100%</button>
+          <button type="button" class="viewer-close" aria-label="Close image viewer">&times;</button>
+        </div>
       </div>
-    </div>
-    <div class="viewer-stage" tabindex="0" aria-label="Image. At 100% size, scroll to inspect details."><img alt=""></div>
-    <div class="viewer-footer">
-      <button type="button" class="viewer-prev" aria-label="Previous image">&#8592;</button>
-      <p class="viewer-caption"></p>
-      <button type="button" class="viewer-next" aria-label="Next image">&#8594;</button>
+      <div class="viewer-stage" tabindex="0" aria-label="Image. At 100% size, scroll to inspect details."><img alt=""></div>
+      <div class="viewer-footer">
+        <button type="button" class="viewer-prev" aria-label="Previous image">&#8592;</button>
+        <p class="viewer-caption"></p>
+        <button type="button" class="viewer-next" aria-label="Next image">&#8594;</button>
+      </div>
     </div>`;
   document.body.append(dialog);
+  const panel = dialog.querySelector('.viewer-panel');
   const stage = dialog.querySelector('.viewer-stage');
   const image = dialog.querySelector('img');
   const zoom = dialog.querySelector('.viewer-zoom');
@@ -75,7 +78,7 @@
     }
   });
   dialog.addEventListener('click', event => {
-    const box = dialog.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
     if (event.target === dialog && (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom)) dialog.close();
   });
   dialog.addEventListener('close', () => {

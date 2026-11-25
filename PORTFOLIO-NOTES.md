@@ -16,6 +16,12 @@ router or rewrite rules.
 - `css/styles.css`: shared typography, accessible colors, focus indicators, and
   light-theme tokens.
 - `css/image-viewer.css`: shared fit-to-screen and full-resolution viewer layouts.
+- `css/landing-pages.css`: responsive landing page showcase cards, using
+  `images/landing pages/Roofing Business.png` and
+  `images/landing pages/dance studio.png`. The dedicated `#landing-pages` section
+  is linked from the main navigation and footer.
+- `js/landing-gallery.js`: touch swiping, mouse dragging, previous/next controls,
+  keyboard navigation, slide announcements, and reduced-motion support.
 - `projects/larkhaven-realty/index.html`: case study copy, workflow explanations,
   technology details, screenshot references, and SEO metadata.
 - `js/project-gallery.js`: preview selection, thumbnail keyboard navigation,
@@ -34,7 +40,7 @@ router or rewrite rules.
 
 ## Screenshots
 
-All homepage projects start with clearly labeled HTML workflow overviews,
+All automation projects start with clearly labeled HTML workflow overviews,
 including the n8n lead intake, invoice follow-up, and Facebook assistant builds.
 Their actual screenshots are available in the thumbnail rail and through
 "Inspect." Selected tall screenshots scroll inside the preview instead of
@@ -46,6 +52,14 @@ replacing a screenshot, update its thumbnail `src`, `data-full`, `alt`, and
 they determine whether the preview should scroll. Update the initial viewport
 image as well if it is the first screenshot. The original image is retained for
 the full-resolution viewer; loading is lazy and asynchronous.
+
+The landing page showcase uses `.landing-design-card` articles in `index.html`.
+Its preview buttons reuse `.screenshot-open` and the shared image viewer, including
+zoom, previous/next, Escape, and focus return. Designs appear one at a time in a
+horizontal gallery with touch swiping, mouse dragging, Previous/Next buttons,
+and Left/Right/Home/End keys. Keep the compact title-only captions. Add new
+designs as sibling articles; the gallery derives its slide count from the markup.
+Keep screenshot paths, alt text, and dimensions in sync when replacing designs.
 
 Case study screenshots are in the `#screenshots` section of
 `projects/larkhaven-realty/index.html`. Existing images remain in `images/n8n/`

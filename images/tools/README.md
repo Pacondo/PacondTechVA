@@ -1,7 +1,7 @@
 # Tool logos
 
-These local assets identify the tools used in portfolio projects. Tool names
-remain visible beside the decorative logos. Generic capabilities retain text
+These local assets identify the tools used in portfolio projects and contact
+links. Tool names remain visible beside the decorative logos. Generic capabilities retain text
 labels. All logo files are served locally without a runtime CDN dependency.
 
 - GoHighLevel reuses the existing `../ghl.jpg` asset.
@@ -21,6 +21,10 @@ labels. All logo files are served locally without a runtime CDN dependency.
 | `zapier.svg` | https://cdn.simpleicons.org/zapier/FF4A00 |
 | `gemini.svg` | https://cdn.simpleicons.org/googlegemini/8E75B2 |
 | `facebook.svg` | https://cdn.simpleicons.org/facebook/0866FF |
+| `upwork.svg` | https://github.com/simple-icons/simple-icons/blob/develop/icons/upwork.svg (green `#14A800`) |
+| `linkedin.svg` | https://github.com/simple-icons/simple-icons/blob/13.0.0/icons/linkedin.svg (blue `#0A66C2`) |
+
+Contact logos are decorative beside visible link labels and use fixed dimensions.
 
 Simple Icons is distributed under CC0. Brand names and marks belong to their
 respective owners.

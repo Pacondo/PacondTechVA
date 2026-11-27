@@ -57,9 +57,16 @@ document.querySelectorAll('.port-gallery').forEach(gallery => {
   });
   prev.addEventListener('click', () => select(index - 1));
   next.addEventListener('click', () => select(index + 1));
-  open.addEventListener('click', () => {
+  function openViewer(source) {
     const selected = Math.max(0, screenshots.indexOf(tabs[index]));
-    window.PortfolioImages.open(images, selected, open);
+    window.PortfolioImages.open(images, selected, source);
+  }
+  open.addEventListener('click', () => openViewer(open));
+  // Clicking the screenshot (or pressing Enter on the preview) opens it in the zoomable viewer.
+  image.addEventListener('click', () => openViewer(viewport));
+  viewport.addEventListener('keydown', event => {
+    if (event.key === 'Enter') { event.preventDefault(); openViewer(viewport); }
   });
+  viewport.setAttribute('aria-label', 'Screenshot preview. Scroll tall screenshots; click or press Enter to zoom.');
   select(0);
 });

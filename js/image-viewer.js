@@ -39,6 +39,21 @@
     next.disabled = index === items.length - 1;
     stage.scrollTop = stage.scrollLeft = 0;
   }
+  // Toggles 100% view. When triggered by a click, the clicked spot stays under the pointer.
+  function setZoom(active, event) {
+    const before = image.getBoundingClientRect();
+    const fx = event && before.width ? (event.clientX - before.left) / before.width : 0;
+    const fy = event && before.height ? (event.clientY - before.top) / before.height : 0;
+    stage.classList.toggle('is-zoomed', active);
+    zoom.setAttribute('aria-pressed', String(active));
+    zoom.textContent = active ? 'Fit image' : 'View at 100%';
+    stage.scrollTop = stage.scrollLeft = 0;
+    if (active && event) {
+      const after = image.getBoundingClientRect();
+      stage.scrollLeft = after.left + fx * after.width - event.clientX;
+      stage.scrollTop = after.top + fy * after.height - event.clientY;
+    }
+  }
   function move(delta) {
     if (index + delta < 0 || index + delta >= items.length) return;
     index += delta;
@@ -52,21 +67,15 @@
       trigger = source;
       previousOverflow = document.body.style.overflow;
       document.body.style.overflow = 'hidden';
-      stage.classList.remove('is-zoomed');
-      zoom.setAttribute('aria-pressed', 'false');
-      zoom.textContent = 'View at 100%';
+      setZoom(false);
       render();
       dialog.showModal();
       if (cursor) dialog.append(cursor);
       dialog.querySelector('.viewer-close').focus();
     }
   };
-  zoom.addEventListener('click', () => {
-    const active = stage.classList.toggle('is-zoomed');
-    zoom.setAttribute('aria-pressed', String(active));
-    zoom.textContent = active ? 'Fit image' : 'View at 100%';
-    stage.scrollTop = stage.scrollLeft = 0;
-  });
+  zoom.addEventListener('click', () => setZoom(!stage.classList.contains('is-zoomed')));
+  image.addEventListener('click', event => setZoom(!stage.classList.contains('is-zoomed'), event));
   prev.addEventListener('click', () => move(-1));
   next.addEventListener('click', () => move(1));
   dialog.querySelector('.viewer-close').addEventListener('click', () => dialog.close());

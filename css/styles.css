@@ -102,7 +102,9 @@ html { scroll-behavior: smooth; }
 }
 .cursor-action::after { transform: rotate(90deg); }
 .custom-cursor[data-action="preview"] .cursor-action,
-.custom-cursor[data-action="close"] .cursor-action { opacity: 1; transform: none; }
+.custom-cursor[data-action="close"] .cursor-action,
+.custom-cursor[data-action="zoom-out"] .cursor-action { opacity: 1; transform: none; }
+.custom-cursor[data-action="zoom-out"] .cursor-action::after { opacity: 0; }
 .custom-cursor[data-action="close"] .cursor-action::before { transform: rotate(45deg); }
 .custom-cursor[data-action="close"] .cursor-action::after { transform: rotate(-45deg); }
 

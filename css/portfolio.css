@@ -20,7 +20,8 @@
 .preview-viewport { width:100%;height:100%;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:var(--accent) var(--preview-bg); }
 .portfolio .preview-viewport img { width:100%;height:100%;object-fit:contain;transform:none;animation:preview-in .18s ease; }
 .portfolio .preview-viewport.is-tall img { width:100%;height:auto;object-fit:initial; }
-.preview-viewport.is-tall::before { content:'Scroll to inspect the full workflow';position:sticky;display:block;top:0;text-align:center;background:var(--preview-bg);color:var(--txt-2);font-size:10px;padding:5px;z-index:1; }
+.portfolio .preview-viewport img { cursor:zoom-in; }
+.preview-viewport.is-tall::before { content:'Scroll to inspect · click to zoom';position:sticky;display:block;top:0;text-align:center;background:var(--preview-bg);color:var(--txt-2);font-size:10px;padding:5px;z-index:1; }
 .preview-overview { height:100%;display:flex;flex-direction:column;justify-content:center;padding:24px; }
 .overview-kicker { color:var(--accent-h);font-size:9px;font-weight:700;letter-spacing:2px; }
 .preview-overview ol { display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin:24px 0;list-style:none; }

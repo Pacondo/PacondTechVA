@@ -11,7 +11,7 @@
   const enabled = window.matchMedia('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) and (forced-colors: none)');
   const nativeTargets = 'input, textarea, select, iframe, video, object, embed, [contenteditable]:not([contenteditable="false"]), [disabled], [aria-disabled="true"]';
   const interactiveTargets = 'a[href], button, summary, [role="button"], [role="link"], .port-gallery-main, .port-gallery-thumb, .cert-clickable, .lightbox, .landing-reel .landing-design-card';
-  const previewTargets = '.cert-clickable, .landing-reel .is-active .landing-card-image, .landing-grid-preview';
+  const previewTargets = '.cert-clickable, .landing-reel .is-active .landing-card-image, .landing-grid-preview, .preview-viewport img, .viewer-stage:not(.is-zoomed) img';
   let mouseX = 0, mouseY = 0;
   let scrollFrame = 0, visible = false;
 
@@ -31,6 +31,7 @@
     }
     cursor.classList.toggle('is-hovering', Boolean(target.closest(interactiveTargets)));
     cursor.dataset.action = target.closest(previewTargets) ? 'preview' :
+      target.closest('.viewer-stage.is-zoomed img') ? 'zoom-out' :
       target.closest('.lightbox-close') || target.matches('.lightbox') ? 'close' : '';
     visible = true;
     root.classList.add('custom-cursor-active');
